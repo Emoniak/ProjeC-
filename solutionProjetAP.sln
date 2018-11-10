@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsForms", "WindowsForm
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "librairyOutil", "librairyOutil\librairyOutil.csproj", "{4ADCDC70-E51C-45A6-9B6D-644969318617}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RemplirBase", "RemplirBase\RemplirBase.csproj", "{0B821299-D6D1-46A5-B997-861E59B71C17}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{4ADCDC70-E51C-45A6-9B6D-644969318617}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4ADCDC70-E51C-45A6-9B6D-644969318617}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4ADCDC70-E51C-45A6-9B6D-644969318617}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B821299-D6D1-46A5-B997-861E59B71C17}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B821299-D6D1-46A5-B997-861E59B71C17}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B821299-D6D1-46A5-B997-861E59B71C17}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B821299-D6D1-46A5-B997-861E59B71C17}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
