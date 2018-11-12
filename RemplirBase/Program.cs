@@ -102,7 +102,7 @@ namespace RemplirBase
                         command.ExecuteNonQuery();
 
                         transaction.Commit();
-                        Console.WriteLine("donné créer");
+                        Console.WriteLine("donnée crée");
                     }
                     catch (Exception e)
                     {
