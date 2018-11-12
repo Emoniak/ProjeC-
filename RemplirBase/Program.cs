@@ -64,7 +64,7 @@ namespace RemplirBase
                         else
                         {
                             dr.Close();
-                            command.CommandText = "call insertModel(" + uneLigne[0] + ",'" + uneLigne[1] + "')";
+                            command.CommandText = "call insertModel(" + uneLigne[0] + ",'" + uneLigne[1] + "',1)";
                             command.ExecuteNonQuery();
                             version = 0;
                         }
