@@ -9,10 +9,25 @@ namespace librairyOutil
     public class Vehicule
     {
         private int nbRoue;
-        private object[] options;
         private string marque;
         private string  model;
         private int plaque;
+        private string categorie;
+        private Option[] options;
+
+        public Option[] Options
+        {
+            get { return options; }
+            set { options = value; }
+        }
+
+
+        public string Categorie
+        {
+            get { return categorie; }
+            set { categorie = value; }
+        }
+
 
         public int Plaque
         {
@@ -33,14 +48,6 @@ namespace librairyOutil
             get { return marque; }
             set { marque = value; }
         }
-
-
-        public object[] Options
-        {
-            get { return options; }
-            set { options = value; }
-        }
-
 
         public int NbRoue
         {

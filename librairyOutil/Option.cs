@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace librairyOutil
 {
-    class Option
+    public class Option
     {
         private string nom;
         private int prix;
