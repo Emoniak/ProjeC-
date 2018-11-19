@@ -35,6 +35,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,11 +47,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Acceuil.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="CreateVoiture.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreateVoiture.Designer.cs">
+      <DependentUpon>CreateVoiture.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+      <DependentUpon>Acceuil.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListeOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListeOptions.Designer.cs">
+      <DependentUpon>ListeOptions.cs</DependentUpon>
     </Compile>
     <Compile Include="Login.cs">
       <SubType>Form</SubType>
@@ -61,8 +74,14 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQL.cs" />
+    <EmbeddedResource Include="CreateVoiture.resx">
+      <DependentUpon>CreateVoiture.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+      <DependentUpon>Acceuil.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListeOptions.resx">
+      <DependentUpon>ListeOptions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Login.resx">
       <DependentUpon>Login.cs</DependentUpon>

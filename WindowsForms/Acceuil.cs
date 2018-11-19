@@ -16,5 +16,11 @@ namespace WindowsForms
         {
             InitializeComponent();
         }
+
+        private void createVoiture_Click(object sender, EventArgs e)
+        {
+            CreateVoiture cv = new CreateVoiture();
+            cv.Show();
+        }
     }
 }
