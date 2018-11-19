@@ -25,7 +25,7 @@ namespace WCFServiceWebRole1
         bool CreerModel(Vehicule vehicule);
 
         [OperationContract]
-        bool AjouterOption(Option option);
+        string AjouterOption(Option option);
 
     }
 

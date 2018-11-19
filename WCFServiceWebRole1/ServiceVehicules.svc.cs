@@ -15,9 +15,32 @@ namespace WCFServiceWebRole1
     // REMARQUE : pour lancer le client test WCF afin de tester ce service, sélectionnez Service1.svc ou Service1.svc.cs dans l'Explorateur de solutions et démarrez le débogage.
     public class Service1 : IServiceVehicules
     {
-        public bool AjouterOption(Option option)
+        public string AjouterOption(Option option)
         {
-            throw new NotImplementedException();
+            using (MySqlConnection connection = new MySqlConnection(ConfigurationManager.ConnectionStrings["AzureDb"].ConnectionString))
+            {
+                //verif si option existe
+                MySqlCommand command = connection.CreateCommand();
+                command.Connection = connection;
+
+                MySqlDataReader dr;
+                command.CommandText = @"select ID_OPTION from toption where NOM_OPTION='" + option.Caracteristique + "'";
+                dr = command.ExecuteReader();
+                if (dr.Read())
+                    return dr[0].ToString();
+                else
+                {
+                    dr.Close();
+                    command.CommandText = "call InsertOption('" + option.Nom + "','" + option.Caracteristique + "')";
+                    command.ExecuteNonQuery();
+                    command.CommandText = "SELECT LAST_INSERT_ID() FROM toption";
+                    dr = command.ExecuteReader();
+                    if (dr.Read())
+                        return dr[0].ToString();
+                }
+            }
+            return "";
+
         }
 
         public bool CreerModel(Vehicule vehicule)
@@ -25,6 +48,14 @@ namespace WCFServiceWebRole1
             string idMarque="",idModel="",idcategorie="";
             int version=-1;
             string[] idOption = new string[vehicule.Options.Length];
+
+            int i = 0;
+            foreach (var item in vehicule.Options)
+            {
+                idOption[i]=AjouterOption(item);
+                i++;
+            }
+
             using (MySqlConnection conn = new MySqlConnection(ConfigurationManager.ConnectionStrings["AzureDb"].ConnectionString))
             {
                 conn.Open();
@@ -85,28 +116,18 @@ namespace WCFServiceWebRole1
                     dr.Close();
 
                     //ajoue des options
-                    int i = 0;
-                    foreach (var item in vehicule.Options)
+                    for (int j = 0; j < idOption.Length; j++)
                     {
-                        if(AjouterOption(item)==false)
+                        if(idOption[j]!="")
+                            command.CommandText = "call choisirOption(" + idOption[j] + "," + idModel + "," + version + ")";
+                        else
                         {
                             transaction.Rollback();
-                            return false;
+                            break;
                         }
-                        command.CommandText = @"select LAST_INSERT_ID() from toption";
-                        dr = command.ExecuteReader();
-                        if (dr.Read())
-                            idOption[i] = dr[0].ToString();
-                        dr.Close();
-                        i++;
                     }
 
-                    for (int j = 0; j < i; j++)
-                    {
-                        command.CommandText = "call choisirOption(" + idOption[j] + "," + idModel + "," + version + ")";
-                    }
-
-
+                    transaction.Commit();
                 }
                 catch (Exception)
                 {
