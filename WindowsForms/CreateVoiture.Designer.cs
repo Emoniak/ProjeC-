@@ -32,13 +32,14 @@
             this.comboBoxModeles = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewOptions = new System.Windows.Forms.DataGridView();
             this.AddOption = new System.Windows.Forms.Button();
             this.comboBoxTypes = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.exit = new System.Windows.Forms.Button();
             this.Submit = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.btnRefresh = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOptions)).BeginInit();
             this.SuspendLayout();
             // 
             // comboBoxMarques
@@ -76,13 +77,14 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "Modèles";
             // 
-            // dataGridView1
+            // dataGridViewOptions
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(18, 112);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(240, 326);
-            this.dataGridView1.TabIndex = 4;
+            this.dataGridViewOptions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewOptions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewOptions.Location = new System.Drawing.Point(18, 112);
+            this.dataGridViewOptions.Name = "dataGridViewOptions";
+            this.dataGridViewOptions.Size = new System.Drawing.Size(240, 326);
+            this.dataGridViewOptions.TabIndex = 4;
             // 
             // AddOption
             // 
@@ -123,22 +125,33 @@
             // 
             // Submit
             // 
-            this.Submit.Location = new System.Drawing.Point(141, 457);
+            this.Submit.Location = new System.Drawing.Point(264, 457);
             this.Submit.Name = "Submit";
             this.Submit.Size = new System.Drawing.Size(81, 34);
             this.Submit.TabIndex = 7;
             this.Submit.Text = "Valider";
             this.Submit.UseVisualStyleBackColor = true;
             // 
+            // btnRefresh
+            // 
+            this.btnRefresh.Location = new System.Drawing.Point(145, 457);
+            this.btnRefresh.Name = "btnRefresh";
+            this.btnRefresh.Size = new System.Drawing.Size(75, 34);
+            this.btnRefresh.TabIndex = 8;
+            this.btnRefresh.Text = "Rafraichir";
+            this.btnRefresh.UseVisualStyleBackColor = true;
+            this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
+            // 
             // CreateVoiture
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(381, 503);
+            this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.Submit);
             this.Controls.Add(this.exit);
             this.Controls.Add(this.AddOption);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewOptions);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
@@ -148,7 +161,7 @@
             this.Name = "CreateVoiture";
             this.Text = "CreateVoiture";
             this.Load += new System.EventHandler(this.CreateVoiture_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOptions)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,11 +173,12 @@
         private System.Windows.Forms.ComboBox comboBoxModeles;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewOptions;
         private System.Windows.Forms.Button AddOption;
         private System.Windows.Forms.ComboBox comboBoxTypes;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button exit;
         private System.Windows.Forms.Button Submit;
+        private System.Windows.Forms.Button btnRefresh;
     }
 }

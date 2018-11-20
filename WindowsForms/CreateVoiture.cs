@@ -13,7 +13,11 @@ namespace WindowsForms
 {
     public partial class CreateVoiture : Form
     {
-     
+        public static List<String> listeOptions = new List<string>();
+        public static DataGridView staticDGVOptions= null;
+
+
+
         public CreateVoiture()
         {
             InitializeComponent();
@@ -27,26 +31,7 @@ namespace WindowsForms
 
         private void CreateVoiture_Load(object sender, EventArgs e)
         {
-            using (MySqlConnection cn = new MySqlConnection(Program._cn))
-            {
-                cn.Open();
-
-                MySqlCommand cmd = new MySqlCommand("select NOM_CATEGORIE from tcategorie", cn);
-                MySqlDataReader dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    comboBoxTypes.Items.Add(dr["NOM_CATEGORIE"].ToString());
-                }
-                dr.Close();
-
-                cmd.CommandText = "select NOM_MARQUE from tmarque";
-                dr = cmd.ExecuteReader();
-                while (dr.Read())
-                {
-                    comboBoxMarques.Items.Add(dr["NOM_MARQUE"].ToString());
-                }
-                dr.Close();
-            }
+            onLoad();
         }
 
         private void comboBoxMarques_TextChanged(object sender, EventArgs e)
@@ -92,6 +77,45 @@ namespace WindowsForms
         private void comboBoxTypes_TextChanged(object sender, EventArgs e)
         {
             onChange();
+        }
+
+        private void btnRefresh_Click(object sender, EventArgs e)
+        {
+            onLoad();
+        }
+
+        private void onLoad()
+        {
+            using (MySqlConnection cn = new MySqlConnection(Program._cn))
+            {
+                cn.Open();
+
+                MySqlCommand cmd = new MySqlCommand("select NOM_CATEGORIE from tcategorie", cn);
+                MySqlDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    comboBoxTypes.Items.Add(dr["NOM_CATEGORIE"].ToString());
+                }
+                dr.Close();
+
+                cmd.CommandText = "select NOM_MARQUE from tmarque";
+                dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    comboBoxMarques.Items.Add(dr["NOM_MARQUE"].ToString());
+                }
+                dr.Close();
+            }
+            if (listeOptions.Count != 0)
+            {
+                DataTable dt = new DataTable();
+                dt.Columns.Add("nomOption");
+                foreach (String nom in listeOptions)
+                {
+                    dt.Rows.Add(nom);
+                }
+                dataGridViewOptions.DataSource = dt;
+            }
         }
     }
 }
