@@ -13,6 +13,8 @@ Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "AzureCloudServiceInterne", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFServiceWebRole1", "WCFServiceWebRole1\WCFServiceWebRole1.csproj", "{C60F71AC-3296-4147-B264-249386D8DC52}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "testWCF", "testWCF\testWCF.csproj", "{44B10B34-0013-4772-9784-F2476AF725F4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{C60F71AC-3296-4147-B264-249386D8DC52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C60F71AC-3296-4147-B264-249386D8DC52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C60F71AC-3296-4147-B264-249386D8DC52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44B10B34-0013-4772-9784-F2476AF725F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44B10B34-0013-4772-9784-F2476AF725F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44B10B34-0013-4772-9784-F2476AF725F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44B10B34-0013-4772-9784-F2476AF725F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

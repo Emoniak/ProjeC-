@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="c4aac5c4-03ae-4c5e-b530-330952a6bb7e" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://wcfgarage.cloudapp.net/ServiceVehicules.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ServiceVehicules.xsd" MetadataType="Schema" ID="a59c8b49-4a8e-401b-8e9c-cd082961c60c" SourceId="1" SourceUrl="http://wcfgarage.cloudapp.net/ServiceVehicules.svc?xsd=xsd0" />
+    <MetadataFile FileName="ServiceVehicules1.xsd" MetadataType="Schema" ID="44371979-4391-45c1-8ee8-bb7cc016ebeb" SourceId="1" SourceUrl="http://wcfgarage.cloudapp.net/ServiceVehicules.svc?xsd=xsd2" />
+    <MetadataFile FileName="ServiceVehicules.disco" MetadataType="Disco" ID="3181568f-1aed-4cbb-9286-93b2563f6319" SourceId="1" SourceUrl="http://wcfgarage.cloudapp.net/ServiceVehicules.svc?disco" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="5a2e97ab-8105-43c9-956c-02518a7d6c76" SourceId="1" SourceUrl="http://wcfgarage.cloudapp.net/ServiceVehicules.svc?wsdl" />
+    <MetadataFile FileName="ServiceVehicules2.xsd" MetadataType="Schema" ID="6c723d24-4366-4df3-b8a2-57f4548e541f" SourceId="1" SourceUrl="http://wcfgarage.cloudapp.net/ServiceVehicules.svc?xsd=xsd3" />
+    <MetadataFile FileName="ServiceVehicules3.xsd" MetadataType="Schema" ID="28d75e93-3262-46da-a447-aa74e56ce4a8" SourceId="1" SourceUrl="http://wcfgarage.cloudapp.net/ServiceVehicules.svc?xsd=xsd1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
