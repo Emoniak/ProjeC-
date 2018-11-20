@@ -28,52 +28,53 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.comboBoxMarques = new System.Windows.Forms.ComboBox();
+            this.comboBoxModeles = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.AddOption = new System.Windows.Forms.Button();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.comboBoxTypes = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.exit = new System.Windows.Forms.Button();
             this.Submit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
-            // comboBox1
+            // comboBoxMarques
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(126, 46);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 0;
+            this.comboBoxMarques.FormattingEnabled = true;
+            this.comboBoxMarques.Location = new System.Drawing.Point(126, 46);
+            this.comboBoxMarques.Name = "comboBoxMarques";
+            this.comboBoxMarques.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxMarques.TabIndex = 0;
+            this.comboBoxMarques.TextChanged += new System.EventHandler(this.comboBoxMarques_TextChanged);
             // 
-            // comboBox2
+            // comboBoxModeles
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(126, 73);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(121, 21);
-            this.comboBox2.TabIndex = 1;
+            this.comboBoxModeles.FormattingEnabled = true;
+            this.comboBoxModeles.Location = new System.Drawing.Point(126, 73);
+            this.comboBoxModeles.Name = "comboBoxModeles";
+            this.comboBoxModeles.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxModeles.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(15, 54);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 13);
+            this.label1.Size = new System.Drawing.Size(48, 13);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Marque";
+            this.label1.Text = "Marques";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(15, 86);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 13);
+            this.label2.Size = new System.Drawing.Size(47, 13);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Model";
+            this.label2.Text = "Modèles";
             // 
             // dataGridView1
             // 
@@ -93,22 +94,23 @@
             this.AddOption.UseVisualStyleBackColor = true;
             this.AddOption.Click += new System.EventHandler(this.AddOption_Click);
             // 
-            // comboBox3
+            // comboBoxTypes
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(126, 15);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(121, 21);
-            this.comboBox3.TabIndex = 0;
+            this.comboBoxTypes.FormattingEnabled = true;
+            this.comboBoxTypes.Location = new System.Drawing.Point(126, 15);
+            this.comboBoxTypes.Name = "comboBoxTypes";
+            this.comboBoxTypes.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxTypes.TabIndex = 0;
+            this.comboBoxTypes.TextChanged += new System.EventHandler(this.comboBoxTypes_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(15, 23);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(85, 13);
+            this.label3.Size = new System.Drawing.Size(94, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "type de vehicule";
+            this.label3.Text = "Types de véhicule";
             // 
             // exit
             // 
@@ -140,11 +142,12 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.comboBox3);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.comboBoxTypes);
+            this.Controls.Add(this.comboBoxModeles);
+            this.Controls.Add(this.comboBoxMarques);
             this.Name = "CreateVoiture";
             this.Text = "CreateVoiture";
+            this.Load += new System.EventHandler(this.CreateVoiture_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -153,13 +156,13 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox comboBoxMarques;
+        private System.Windows.Forms.ComboBox comboBoxModeles;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button AddOption;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox comboBoxTypes;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button exit;
         private System.Windows.Forms.Button Submit;

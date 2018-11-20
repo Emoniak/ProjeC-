@@ -31,10 +31,11 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.search = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewOptions = new System.Windows.Forms.DataGridView();
             this.Exit = new System.Windows.Forms.Button();
             this.submit = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.richTextBoxOption = new System.Windows.Forms.RichTextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOptions)).BeginInit();
             this.SuspendLayout();
             // 
             // textBox1
@@ -62,13 +63,15 @@
             this.search.Text = "rechercher";
             this.search.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // dataGridViewOptions
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 38);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(298, 371);
-            this.dataGridView1.TabIndex = 3;
+            this.dataGridViewOptions.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridViewOptions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewOptions.Location = new System.Drawing.Point(12, 38);
+            this.dataGridViewOptions.Name = "dataGridViewOptions";
+            this.dataGridViewOptions.Size = new System.Drawing.Size(298, 232);
+            this.dataGridViewOptions.TabIndex = 3;
+            this.dataGridViewOptions.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewOptions_CellContentClick);
             // 
             // Exit
             // 
@@ -88,20 +91,30 @@
             this.submit.Text = "valider";
             this.submit.UseVisualStyleBackColor = true;
             // 
+            // richTextBoxOption
+            // 
+            this.richTextBoxOption.Location = new System.Drawing.Point(12, 276);
+            this.richTextBoxOption.Name = "richTextBoxOption";
+            this.richTextBoxOption.Size = new System.Drawing.Size(298, 133);
+            this.richTextBoxOption.TabIndex = 6;
+            this.richTextBoxOption.Text = "";
+            // 
             // ListeOptions
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(322, 450);
+            this.Controls.Add(this.richTextBoxOption);
             this.Controls.Add(this.submit);
             this.Controls.Add(this.Exit);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewOptions);
             this.Controls.Add(this.search);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
             this.Name = "ListeOptions";
             this.Text = "ListeOptions";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Load += new System.EventHandler(this.ListeOptions_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOptions)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -112,8 +125,9 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button search;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewOptions;
         private System.Windows.Forms.Button Exit;
         private System.Windows.Forms.Button submit;
+        private System.Windows.Forms.RichTextBox richTextBoxOption;
     }
 }
