@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using librairyOutil;
 
 namespace testWCF
 {
@@ -12,7 +11,7 @@ namespace testWCF
         static void Main(string[] args)
         {
             ServiceInterne.ServiceVehiculesClient client = new ServiceInterne.ServiceVehiculesClient();
-            testWCF.ServiceInterne.Option option = new ServiceInterne.Option();
+            ServiceInterne.Option option = new ServiceInterne.Option();
 
             option.Nom = "Siege Chauffant";
             option.Caracteristique = "ameliore le confor en chauffant les fesses";
