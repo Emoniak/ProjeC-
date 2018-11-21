@@ -1,0 +1,21 @@
+﻿@model DataVehicule
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<table>
+    <tr>
+        <th>Nom marque</th>
+    </tr>
+    @{
+
+        foreach (var item in Model.Vehicules)
+        {
+            <tr>
+                <th>@item.marque</th>
+            </tr>
+        }
+
+    }
+</table>
