@@ -13,6 +13,8 @@ Project("{CC5FD16D-436D-48AD-A40C-5A424C6E3E79}") = "AzureCloudService", "AzureC
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WCFServiceWebRoleGarage", "WCFServiceWebRoleGarage\WCFServiceWebRoleGarage.csproj", "{46B65D45-CA0C-4460-A005-DB49CBAC1B45}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InterfaceClient", "InterfaceClient\InterfaceClient.csproj", "{0FA855CF-42E3-4F89-BB73-A6DEAE566491}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{46B65D45-CA0C-4460-A005-DB49CBAC1B45}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46B65D45-CA0C-4460-A005-DB49CBAC1B45}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46B65D45-CA0C-4460-A005-DB49CBAC1B45}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0FA855CF-42E3-4F89-BB73-A6DEAE566491}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0FA855CF-42E3-4F89-BB73-A6DEAE566491}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0FA855CF-42E3-4F89-BB73-A6DEAE566491}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0FA855CF-42E3-4F89-BB73-A6DEAE566491}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
