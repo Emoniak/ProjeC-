@@ -117,5 +117,52 @@ namespace WindowsForms
                 dataGridViewOptions.DataSource = dt;
             }
         }
+
+        private void exit_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
+
+        private void Submit_Click(object sender, EventArgs e)
+        {
+            if (!comboBoxTypes.Text.Equals("") && !comboBoxMarques.Text.Equals("") && !comboBoxModeles.Text.Equals(""))
+            {
+                WCFUtils.ServiceClient client = new WCFUtils.ServiceClient();
+                WCFUtils.Option[] options = new WCFUtils.Option[listeOptions.Count];
+                WCFUtils.Vehicule vehicule = new WCFUtils.Vehicule();
+
+                if (listeOptions.Count > 0)
+                {
+                    using (MySqlConnection cn = new MySqlConnection(Program._cn))
+                    {
+                        cn.Open();
+                        for (int i = 0; i < listeOptions.Count; i++)
+                        {
+                            MySqlCommand cmd = new MySqlCommand("select caracteristique, NOM_OPTION from toption where NOM_OPTION = '" + listeOptions[i] + "'", cn);
+                            MySqlDataReader dr = cmd.ExecuteReader();
+
+                            options[i] = new WCFUtils.Option { Caracteristique = dr["NOM_OPTION"].ToString(), Nom = dr["caracteristique"].ToString() };
+                        }
+                    }
+                }
+                vehicule.Options = options;
+                vehicule.Marque = comboBoxMarques.Text;
+                vehicule.Categorie = comboBoxTypes.Text;
+                vehicule.Model = comboBoxModeles.Text;
+
+                bool resultat = client.CreerModel(vehicule);
+                if (!resultat)
+                {
+                    MessageBox.Show("Une erreur s'est produite, veuillez réessayer", "Erreur",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else this.Dispose();
+            }
+            else
+            {
+                MessageBox.Show("Veuillez remplir tous les champs", "Erreur",
+                MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }

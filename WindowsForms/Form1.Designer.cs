@@ -82,11 +82,11 @@
             // 
             // createVoiture
             // 
-            this.createVoiture.Location = new System.Drawing.Point(696, 12);
+            this.createVoiture.Location = new System.Drawing.Point(678, 12);
             this.createVoiture.Name = "createVoiture";
-            this.createVoiture.Size = new System.Drawing.Size(92, 37);
+            this.createVoiture.Size = new System.Drawing.Size(110, 37);
             this.createVoiture.TabIndex = 6;
-            this.createVoiture.Text = "crée une voiture";
+            this.createVoiture.Text = "Créer une voiture";
             this.createVoiture.UseVisualStyleBackColor = true;
             this.createVoiture.Click += new System.EventHandler(this.createVoiture_Click);
             // 

@@ -62,20 +62,20 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 54);
+            this.label1.Location = new System.Drawing.Point(15, 49);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 13);
+            this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 2;
-            this.label1.Text = "Marques";
+            this.label1.Text = "Marque";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 86);
+            this.label2.Location = new System.Drawing.Point(15, 76);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 13);
+            this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 3;
-            this.label2.Text = "Modèles";
+            this.label2.Text = "Modèle";
             // 
             // dataGridViewOptions
             // 
@@ -90,9 +90,9 @@
             // 
             this.AddOption.Location = new System.Drawing.Point(264, 112);
             this.AddOption.Name = "AddOption";
-            this.AddOption.Size = new System.Drawing.Size(81, 34);
+            this.AddOption.Size = new System.Drawing.Size(81, 54);
             this.AddOption.TabIndex = 5;
-            this.AddOption.Text = "Ajouter une Option";
+            this.AddOption.Text = "Ajouter une/des option(s)";
             this.AddOption.UseVisualStyleBackColor = true;
             this.AddOption.Click += new System.EventHandler(this.AddOption_Click);
             // 
@@ -108,11 +108,11 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 23);
+            this.label3.Location = new System.Drawing.Point(15, 18);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 13);
+            this.label3.Size = new System.Drawing.Size(89, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Types de véhicule";
+            this.label3.Text = "Type de véhicule";
             // 
             // exit
             // 
@@ -120,8 +120,9 @@
             this.exit.Name = "exit";
             this.exit.Size = new System.Drawing.Size(81, 34);
             this.exit.TabIndex = 6;
-            this.exit.Text = "Sortir";
+            this.exit.Text = "Annuler";
             this.exit.UseVisualStyleBackColor = true;
+            this.exit.Click += new System.EventHandler(this.exit_Click);
             // 
             // Submit
             // 
@@ -131,6 +132,7 @@
             this.Submit.TabIndex = 7;
             this.Submit.Text = "Valider";
             this.Submit.UseVisualStyleBackColor = true;
+            this.Submit.Click += new System.EventHandler(this.Submit_Click);
             // 
             // btnRefresh
             // 
