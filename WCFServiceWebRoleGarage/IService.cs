@@ -6,11 +6,11 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 
-namespace WCFServiceWebRole1
+namespace WCFServiceWebRoleGarage
 {
     // REMARQUE : vous pouvez utiliser la commande Renommer du menu Refactoriser pour changer le nom d'interface "IService1" à la fois dans le code et le fichier de configuration.
     [ServiceContract]
-    public interface IServiceVehicules
+    public interface IService
     {
 
         [OperationContract]
@@ -21,11 +21,10 @@ namespace WCFServiceWebRole1
 
         // TODO: ajoutez vos opérations de service ici
         [OperationContract]
-        bool CreerModel(Vehicule vehicule);
-
-        [OperationContract]
         string AjouterOption(Option option);
 
+        [OperationContract]
+        bool CreerModel(Vehicule vehicule);
     }
 
 

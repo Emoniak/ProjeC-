@@ -5,7 +5,7 @@ using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Diagnostics;
 using Microsoft.WindowsAzure.ServiceRuntime;
 
-namespace WCFServiceWebRole1
+namespace WCFServiceWebRoleGarage
 {
     public class WebRole : RoleEntryPoint
     {

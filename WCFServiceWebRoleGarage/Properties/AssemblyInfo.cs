@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Les informations générales relatives à un assembly dépendent de 
 // l'ensemble d'attributs suivant. Pour modifier les informations
 // associées à un assembly, changez les valeurs de ces attributs.
-[assembly: AssemblyTitle("WCFServiceWebRole1")]
+[assembly: AssemblyTitle("WCFServiceWebRoleGarage")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("WCFServiceWebRole1")]
+[assembly: AssemblyProduct("WCFServiceWebRoleGarage")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Le GUID suivant est pour l'ID de la typelib si ce projet est exposé à COM
-[assembly: Guid("c60f71ac-3296-4147-b264-249386d8dc52")]
+[assembly: Guid("46b65d45-ca0c-4460-a005-db49cbac1b45")]
 
 // Les informations de version pour un assembly se composent des quatre valeurs suivantes :
 //

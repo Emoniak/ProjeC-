@@ -5,13 +5,13 @@
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>2.9</ProductVersion>
-    <ProjectGuid>0f71c841-93d4-48c8-b760-0ac35af644a6</ProjectGuid>
+    <ProjectGuid>b27873fb-174a-47f7-a51d-b4ce746e5ff9</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AzureCloudServiceInterne</RootNamespace>
-    <AssemblyName>AzureCloudServiceInterne</AssemblyName>
+    <RootNamespace>AzureCloudService</RootNamespace>
+    <AssemblyName>AzureCloudService</AssemblyName>
     <StartDevelopmentStorage>True</StartDevelopmentStorage>
-    <Name>AzureCloudServiceInterne</Name>
+    <Name>AzureCloudService</Name>
     <PackageEnableRemoteDebugger>False</PackageEnableRemoteDebugger>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -38,20 +38,20 @@
     <ServiceConfiguration Include="ServiceConfiguration.Cloud.cscfg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\WCFServiceWebRole1\WCFServiceWebRole1.csproj">
-      <Name>WCFServiceWebRole1</Name>
-      <Project>{c60f71ac-3296-4147-b264-249386d8dc52}</Project>
+    <ProjectReference Include="..\WCFServiceWebRoleGarage\WCFServiceWebRoleGarage.csproj">
+      <Name>WCFServiceWebRoleGarage</Name>
+      <Project>{46b65d45-ca0c-4460-a005-db49cbac1b45}</Project>
       <Private>True</Private>
       <RoleType>Web</RoleType>
-      <RoleName>WCFServiceWebRole1</RoleName>
+      <RoleName>WCFServiceWebRoleGarage</RoleName>
       <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="WCFServiceWebRole1Content\" />
+    <Folder Include="WCFServiceWebRoleGarageContent\" />
   </ItemGroup>
   <ItemGroup>
-    <DiagnosticsConfiguration Include="WCFServiceWebRole1Content\diagnostics.wadcfgx" />
+    <DiagnosticsConfiguration Include="WCFServiceWebRoleGarageContent\diagnostics.wadcfgx" />
   </ItemGroup>
   <!-- Import the target files for this project template -->
   <PropertyGroup>
