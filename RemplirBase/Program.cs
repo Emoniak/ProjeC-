@@ -19,102 +19,113 @@ namespace RemplirBase
             string descriptionOption = "";
             int version = 0;
 
-            foreach (string line in lines)
+            using (MySqlConnection conn = new MySqlConnection(connctionString))
             {
-                uneLigne = line.Split(';');
-                using (MySqlConnection conn = new MySqlConnection(connctionString))
+                conn.Open();
+                MySqlCommand cmd = new MySqlCommand(@"    insert into tclient (Nom_client,isphysique)
+    values('aucun client',0)", conn);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+
+                foreach (string line in lines)
                 {
-                    version++;
-                    conn.Open();
-
-                    MySqlCommand command = conn.CreateCommand();
-                    MySqlTransaction transaction;
-                    transaction = conn.BeginTransaction();
-                    command.Connection = conn;
-                    command.Transaction = transaction;
-
-                    MySqlDataReader dr;
-
-                    try
+                    uneLigne = line.Split(';');
+                    using (MySqlConnection conn = new MySqlConnection(connctionString))
                     {
-                        command.CommandText = "select id_marque from tmarque where NOM_MARQUE='" + uneLigne[0] + "'";
-                        dr = command.ExecuteReader();
-                        if (dr.Read())
-                            uneLigne[0] = dr["id_marque"].ToString();
-                        else
+                        version++;
+                        conn.Open();
+
+                        MySqlCommand command = conn.CreateCommand();
+                        MySqlTransaction transaction;
+                        transaction = conn.BeginTransaction();
+                        command.Connection = conn;
+                        command.Transaction = transaction;
+
+                        MySqlDataReader dr;
+
+                        try
                         {
+                            command.CommandText = "select id_marque from tmarque where NOM_MARQUE='" + uneLigne[0] + "'";
+                            dr = command.ExecuteReader();
+                            if (dr.Read())
+                                uneLigne[0] = dr["id_marque"].ToString();
+                            else
+                            {
+                                dr.Close();
+                                command.CommandText = "call InsertMarque('" + uneLigne[0] + "')";
+                                command.ExecuteNonQuery();
+                                command.CommandText = "call InsertEntreprise('" + uneLigne[0] + "')";
+                                command.ExecuteNonQuery();
+                            }
                             dr.Close();
-                            command.CommandText = "call InsertMarque('" + uneLigne[0] + "')";
+
+
+
+                            command.CommandText = "select id_marque from tmarque where NOM_MARQUE='" + uneLigne[0] + "'";
+                            dr = command.ExecuteReader();
+                            if (dr.Read())
+                                uneLigne[0] = dr["id_marque"].ToString();
+                            dr.Close();
+
+                            command.CommandText = "select id_model from tmodel where NOM_Model='" + uneLigne[1] + "'";
+                            dr = command.ExecuteReader();
+                            if (dr.Read())
+                                uneLigne[1] = dr["id_model"].ToString();
+                            else
+                            {
+                                dr.Close();
+                                command.CommandText = "call insertModel(" + uneLigne[0] + ",'" + uneLigne[1] + "',1)";
+                                command.ExecuteNonQuery();
+                                version = 0;
+                            }
+                            dr.Close();
+
+                            command.CommandText = "select Id_option from toption where nom_Option='Moteur " + uneLigne[2] + "'";
+                            dr = command.ExecuteReader();
+                            if (dr.Read())
+                                uneLigne[2] = dr["Id_option"].ToString();
+                            else
+                            {
+                                dr.Close();
+                                descriptionOption = "Torque (Nm/rpm) : " + uneLigne[4];
+                                descriptionOption += "\n (l/100) : " + uneLigne[6];
+                                descriptionOption += "\n CO2(g/km) : " + uneLigne[7];
+
+                                command.CommandText = "call InsertOption('Moteur " + uneLigne[2] + "','" + descriptionOption + "')";
+                                command.ExecuteNonQuery();
+                            }
+                            dr.Close();
+
+                            //gros slct a faire pour affecter les id a la place ds nom
+                            command.CommandText = "select id_model from tmodel where NOM_Model='" + uneLigne[1] + "'";
+                            dr = command.ExecuteReader();
+                            if (dr.Read())
+                                uneLigne[1] = dr["id_model"].ToString();
+                            dr.Close();
+                            command.CommandText = "select Id_option from toption where nom_Option='Moteur " + uneLigne[2] + "'";
+                            dr = command.ExecuteReader();
+                            if (dr.Read())
+                                uneLigne[2] = dr["Id_option"].ToString();
+                            dr.Close();
+
+                            command.CommandText = "call choisirOption(" + uneLigne[2] + "," + uneLigne[1] + "," + version + ")";
                             command.ExecuteNonQuery();
+
+                            transaction.Commit();
+                            Console.WriteLine("donnée crée");
                         }
-                        dr.Close();
-                        
-
-                        
-                        command.CommandText = "select id_marque from tmarque where NOM_MARQUE='" + uneLigne[0] + "'";
-                        dr = command.ExecuteReader();
-                        if (dr.Read())
-                            uneLigne[0] = dr["id_marque"].ToString();
-                        dr.Close();
-
-                        command.CommandText = "select id_model from tmodel where NOM_Model='" + uneLigne[1] + "'";
-                        dr = command.ExecuteReader();
-                        if (dr.Read())
-                            uneLigne[1] = dr["id_model"].ToString();
-                        else
+                        catch (Exception e)
                         {
-                            dr.Close();
-                            command.CommandText = "call insertModel(" + uneLigne[0] + ",'" + uneLigne[1] + "',1)";
-                            command.ExecuteNonQuery();
-                            version = 0;
+                            Console.WriteLine(e.Message);
+                            transaction.Rollback();
                         }
-                        dr.Close();
-
-                        command.CommandText = "select Id_option from toption where nom_Option='Moteur " + uneLigne[2] + "'";
-                        dr = command.ExecuteReader();
-                        if (dr.Read())
-                            uneLigne[2] = dr["Id_option"].ToString();
-                        else
+                        finally
                         {
-                            dr.Close();
-                            descriptionOption = "Torque (Nm/rpm) : " + uneLigne[4];
-                            descriptionOption += "\n (l/100) : " + uneLigne[6];
-                            descriptionOption += "\n CO2(g/km) : " + uneLigne[7];
-
-                            command.CommandText = "call InsertOption('Moteur " + uneLigne[2] + "','" + descriptionOption + "')";
-                            command.ExecuteNonQuery();
+                            conn.Close();
                         }
-                        dr.Close();
-
-                        //gros slct a faire pour affecter les id a la place ds nom
-                        command.CommandText = "select id_model from tmodel where NOM_Model='" + uneLigne[1] + "'";
-                        dr = command.ExecuteReader();
-                        if (dr.Read())
-                            uneLigne[1] = dr["id_model"].ToString();
-                        dr.Close();
-                        command.CommandText = "select Id_option from toption where nom_Option='Moteur " + uneLigne[2] + "'";
-                        dr = command.ExecuteReader();
-                        if (dr.Read())
-                            uneLigne[2] = dr["Id_option"].ToString();
-                        dr.Close();
-
-                        command.CommandText = "call choisirOption("+uneLigne[2]+","+uneLigne[1]+","+version+")";
-                        command.ExecuteNonQuery();
-
-                        transaction.Commit();
-                        Console.WriteLine("donnée crée");
-                    }
-                    catch (Exception e)
-                    {
-                        Console.WriteLine(e.Message);
-                        transaction.Rollback();
-                    }
-                    finally
-                    {
-                        conn.Close();
                     }
                 }
-            }
             Console.WriteLine("fini");
             Console.ReadLine();
         }
