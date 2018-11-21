@@ -18,12 +18,15 @@ namespace RemplirBase
             string[] uneLigne = new string[17];
             string descriptionOption = "";
             int version = 0;
+            int idcat = 0;
 
             using (MySqlConnection conn = new MySqlConnection(connctionString))
             {
                 conn.Open();
                 MySqlCommand cmd = new MySqlCommand(@"    insert into tclient (Nom_client,isphysique)
     values('aucun client',0)", conn);
+                cmd.ExecuteNonQuery();
+                cmd.CommandText = @"insert into tcategorie (NOM_CATEGORIE) values ('Voiture')";
                 cmd.ExecuteNonQuery();
                 conn.Close();
             }
@@ -68,16 +71,22 @@ namespace RemplirBase
                                 uneLigne[0] = dr["id_marque"].ToString();
                             dr.Close();
 
-                            command.CommandText = "select id_model from tmodel where NOM_Model='" + uneLigne[1] + "'";
+                        command.CommandText = "select ID_CATEGORIE from tcategorie where NOM_CATEGORIE='Voiture'";
+                        dr = command.ExecuteReader();
+                        if (dr.Read())
+                            idcat = Convert.ToInt32(dr["ID_CATEGORIE"]);
+                        dr.Close();
+
+                        command.CommandText = "select id_model from tmodel where NOM_Model='" + uneLigne[1] + "'";
                             dr = command.ExecuteReader();
                             if (dr.Read())
                                 uneLigne[1] = dr["id_model"].ToString();
                             else
                             {
                                 dr.Close();
-                                command.CommandText = "call insertModel(" + uneLigne[0] + ",'" + uneLigne[1] + "',1)";
+                                command.CommandText = "call insertModel(" + uneLigne[0] + ",'" + uneLigne[1] + "',"+idcat+")";
                                 command.ExecuteNonQuery();
-                                version = 0;
+                                version = 1;
                             }
                             dr.Close();
 
@@ -91,8 +100,8 @@ namespace RemplirBase
                                 descriptionOption = "Torque (Nm/rpm) : " + uneLigne[4];
                                 descriptionOption += "\n (l/100) : " + uneLigne[6];
                                 descriptionOption += "\n CO2(g/km) : " + uneLigne[7];
-
-                                command.CommandText = "call InsertOption('Moteur " + uneLigne[2] + "','" + descriptionOption + "')";
+                                Random rand = new Random();
+                                command.CommandText = "call InsertOption('Moteur " + uneLigne[2] + "','" + descriptionOption + "',"+rand.Next(3000,10000)+")";
                                 command.ExecuteNonQuery();
                             }
                             dr.Close();
