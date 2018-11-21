@@ -42,7 +42,12 @@ namespace WCFServiceWebRoleGarage
             return "";
         }
 
-        public bool CreerModel(Vehicule vehicule)
+        public string CreerClient(Client client)
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool CreerModel(Vehicule vehicule,Client client)
         {
             string idMarque = "", idModel = "", idcategorie = "";
             int version = -1;
@@ -111,9 +116,17 @@ namespace WCFServiceWebRoleGarage
                         command.CommandText = "call insertModel(" + idMarque + ",'" + vehicule.Model + "'," + idcategorie + ")";
                         command.ExecuteNonQuery();
                         version = 0;
+                        command.CommandText = "select LAST_INSERT_ID() from tmodel";
+                        dr = command.ExecuteReader();
+                        if (dr.Read())
+                            idModel = dr[0].ToString();
                     }
                     dr.Close();
 
+                    command.CommandText = @"select version from toption_has_tmodel where id_model=" + idModel + " order by version DESC";
+                    if (dr.Read())
+                        version = Convert.ToInt32(dr[0]) + 1;
+                    dr.Close();
                     //ajoue des options
                     for (int j = 0; j < idOption.Length; j++)
                     {
@@ -124,7 +137,25 @@ namespace WCFServiceWebRoleGarage
                             transaction.Rollback();
                             break;
                         }
+                        command.ExecuteNonQuery();
                     }
+
+                    //creation client
+                    string idclient = CreerClient(client);
+                    //creation devis
+                    string iddevis = "";
+
+                    //recuperation de l'usine
+                    string idusine = "";
+                    command.CommandText = "select id_client from tclient where nom_client='usine " + vehicule.Marque + "'";
+                    dr = command.ExecuteReader();
+                    if (dr.Read())
+                        idusine = dr[0].ToString();
+                    dr.Close();
+
+                    //creation vehicule
+                    command.CommandText = "call CreationVehicule(" + iddevis + "," + idusine + "," + idModel + ")";
+                    command.ExecuteNonQuery();
 
                     transaction.Commit();
                 }
