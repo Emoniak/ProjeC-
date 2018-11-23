@@ -14,7 +14,7 @@ namespace RemplirBase
         static void Main(string[] args)
         {
             string connctionString = ConfigurationManager.ConnectionStrings["cs"].ConnectionString;
-            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\antoi\Source\Repos\Emoniak\ProjeC-\RemplirBase\Ressource\DB Vehicle PTE.xls.csv");
+            string[] lines = System.IO.File.ReadAllLines(@"C:\Users\Antoine\Source\Repos\Emoniak\ProjeC-\RemplirBase\Ressource\DB Vehicle PTE.xls.csv");
             string[] uneLigne = new string[17];
             string descriptionOption = "";
             int version = 0;

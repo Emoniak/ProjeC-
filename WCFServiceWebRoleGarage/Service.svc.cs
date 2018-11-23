@@ -144,6 +144,7 @@ namespace WCFServiceWebRoleGarage
 
                     //creation devis
                     string iddevis = "";
+                    //creation facture
 
                     //recuperation de l'usine
                     string idusine = "";
