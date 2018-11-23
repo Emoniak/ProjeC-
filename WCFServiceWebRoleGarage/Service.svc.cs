@@ -232,6 +232,48 @@ namespace WCFServiceWebRoleGarage
             return true;
         }
 
+        public bool SortieUsine(int idVehicule,string plaque)
+        {
+            using (MySqlConnection conn = new MySqlConnection(this.connectionString))
+            {
+                string idcli = "";
+
+                conn.Open();
+
+                MySqlCommand command = conn.CreateCommand();
+                MySqlTransaction transaction;
+                transaction = conn.BeginTransaction();
+                command.Connection = conn;
+                command.Transaction = transaction;
+
+                MySqlDataReader dr;
+                try
+                {
+                    //a refaire apres manger
+                    command.CommandText = "select id_client from tvehicule where id_vehicule=" + idVehicule;
+                    dr = command.ExecuteReader();
+                    if (dr.Read())
+                        idcli = dr[0].ToString();
+                    dr.Close();
+                    command.CommandText = "call sortiUsine(" + idcli + "," + idVehicule + ",'" + plaque + "')";
+                    command.ExecuteNonQuery();
+
+                    transaction.Commit();
+                    return true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    transaction.Rollback();
+                    return false;
+                }
+                finally
+                {
+                    conn.Close();
+                } 
+            }
+        }
+
         public string GetData(int value)
         {
             return string.Format("You entered: {0}", value);
