@@ -6,6 +6,8 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using MySql.Data.MySqlClient;
+using System.Net.Mail;
+using System.Net;
 
 namespace WCFServiceWebRoleGarage
 {
@@ -14,6 +16,11 @@ namespace WCFServiceWebRoleGarage
     public class Service1 : IService
     {
         private string connectionString = @"Server=mysql-serveur.mysql.database.azure.com; Database=db_garage; Uid=AdminGarage@mysql-serveur; Pwd=TOTO1234!;";
+        /// <summary>
+        /// Ajoute une option dans la bdd
+        /// </summary>
+        /// <param name="option"> classe Option du WCF</param>
+        /// <returns></returns>
         public string AjouterOption(Option option)
         {
             using (MySqlConnection connection = new MySqlConnection(this.connectionString))
@@ -41,7 +48,12 @@ namespace WCFServiceWebRoleGarage
             }
             return "";
         }
-
+        /// <summary>
+        /// Crée un devis
+        /// </summary>
+        /// <param name="vehicule">Objet vehicule WCF</param>
+        /// <param name="client"> Objet Client WCF</param>
+        /// <returns></returns>
         public string CreateDevis(Vehicule vehicule,Client client)
         {
             //calcul du prix
@@ -72,7 +84,11 @@ namespace WCFServiceWebRoleGarage
             }
             return idDevis;
         }
-
+        /// <summary>
+        /// Crée un client dans la bdd
+        /// </summary>
+        /// <param name="client">objet client WCF</param>
+        /// <returns></returns>
         public string CreerClient(Client client)
         {
             string idcli = "";
@@ -97,7 +113,12 @@ namespace WCFServiceWebRoleGarage
             }
             return idcli;
         }
-
+        /// <summary>
+        /// Crée un vehcule dans la bdd et passe commande à l'usine
+        /// </summary>
+        /// <param name="vehicule">objet vehicule du WCF</param>
+        /// <param name="client">objet client WCF</param>
+        /// <returns></returns>
         public bool CreerModel(Vehicule vehicule,Client client)
         {
             string idMarque = "", idModel = "", idcategorie = "",idClient="",idDevis="";
@@ -232,6 +253,12 @@ namespace WCFServiceWebRoleGarage
             return true;
         }
 
+        /// <summary>
+        /// spécifie la fin de production et envois un mail au client
+        /// </summary>
+        /// <param name="idVehicule">l'identifiant du vehicule</param>
+        /// <param name="plaque">la nouvelle plaque de la voiture</param>
+        /// <returns></returns>
         public bool SortieUsine(int idVehicule,string plaque)
         {
             using (MySqlConnection conn = new MySqlConnection(this.connectionString))
@@ -258,6 +285,10 @@ namespace WCFServiceWebRoleGarage
                     command.ExecuteNonQuery();
 
                     transaction.Commit();
+                    command.CommandText = "select mail from tclient where id_client=" + idcli;
+                    dr = command.ExecuteReader();
+                    if (dr.Read())
+                        envoieMail(dr[0].ToString());
                     return true;
                 }
                 catch (Exception e)
@@ -273,11 +304,37 @@ namespace WCFServiceWebRoleGarage
             }
         }
 
+        private void envoieMail(string mail)
+        {
+            MailMessage MonMessage = new MailMessage();
+            MonMessage.Subject = "Votre vehicule est pret";
+            MonMessage.Body = "Bonjour Madame/Monsieur \n je vous envois ce message pour vous informer que votre vehicule est sorti d'usine il devrais être disponible dans 1mois dans votre garage \n Merci de votre confiance.";
+            MonMessage.From = new MailAddress("groupe@AP17.fr");
+            MonMessage.To.Add(new MailAddress(mail));
+
+            var client = new SmtpClient("smtp.mailtrap.io", 2525)
+            {
+                Credentials = new NetworkCredential("3cc26aad88bdc1", "c1e6c33eae201c"),
+                EnableSsl = true
+            };
+            client.Send(MonMessage);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="value"></param>
+        /// <returns></returns>
         public string GetData(int value)
         {
             return string.Format("You entered: {0}", value);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="composite"></param>
+        /// <returns></returns>
         public CompositeType GetDataUsingDataContract(CompositeType composite)
         {
             if (composite == null)
