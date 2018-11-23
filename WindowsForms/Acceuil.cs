@@ -23,9 +23,10 @@ namespace WindowsForms
             cv.Show();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void devis_Click(object sender, EventArgs e)
         {
-
+            Devis devis = new Devis();
+            devis.Show();
         }
     }
 }

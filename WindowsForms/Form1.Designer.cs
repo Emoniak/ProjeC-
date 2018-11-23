@@ -34,7 +34,7 @@
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.createVoiture = new System.Windows.Forms.Button();
-            this.btnAdmin = new System.Windows.Forms.Button();
+            this.devis = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -91,22 +91,22 @@
             this.createVoiture.UseVisualStyleBackColor = true;
             this.createVoiture.Click += new System.EventHandler(this.createVoiture_Click);
             // 
-            // btnAdmin
+            // devis
             // 
-            this.btnAdmin.Location = new System.Drawing.Point(547, 12);
-            this.btnAdmin.Name = "btnAdmin";
-            this.btnAdmin.Size = new System.Drawing.Size(85, 37);
-            this.btnAdmin.TabIndex = 7;
-            this.btnAdmin.Text = "Administration";
-            this.btnAdmin.UseVisualStyleBackColor = true;
-            this.btnAdmin.Click += new System.EventHandler(this.button1_Click);
+            this.devis.Location = new System.Drawing.Point(12, 12);
+            this.devis.Name = "devis";
+            this.devis.Size = new System.Drawing.Size(106, 37);
+            this.devis.TabIndex = 7;
+            this.devis.Text = "Devis en cours";
+            this.devis.UseVisualStyleBackColor = true;
+            this.devis.Click += new System.EventHandler(this.devis_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnAdmin);
+            this.Controls.Add(this.devis);
             this.Controls.Add(this.createVoiture);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dataGridView2);
@@ -130,6 +130,6 @@
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button createVoiture;
-        private System.Windows.Forms.Button btnAdmin;
+        private System.Windows.Forms.Button devis;
     }
 }
