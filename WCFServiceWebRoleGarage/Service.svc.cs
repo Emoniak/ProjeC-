@@ -102,7 +102,7 @@ namespace WCFServiceWebRoleGarage
         {
             string idMarque = "", idModel = "", idcategorie = "",idClient="",idDevis="";
             int version = -1;
-            /*
+            
             string[] idOption = new string[vehicule.Options.Length];
 
             int i = 0;
@@ -110,7 +110,7 @@ namespace WCFServiceWebRoleGarage
             {
                 idOption[i] = AjouterOption(item);
                 i++;
-            }*/
+            }
 
             idClient = CreerClient(client);
             idDevis = CreateDevis(vehicule,client);
@@ -184,7 +184,7 @@ namespace WCFServiceWebRoleGarage
                         version = Convert.ToInt32(dr[0]) + 1;
                     dr.Close();
                     //ajoue des options
-                    /*
+                    
                     for (int j = 0; j < idOption.Length; j++)
                     {
                         if (idOption[j] != "")
@@ -196,7 +196,7 @@ namespace WCFServiceWebRoleGarage
                         }
                         command.ExecuteNonQuery();
                     }
-                    */
+                    
                     //recuperation de l'usine
                     string idusine = "";
                     command.CommandText = "select id_client from tclient where nom_client='usine " + vehicule.Marque + "'";
