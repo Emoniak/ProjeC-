@@ -276,6 +276,83 @@ namespace WindowsForms.WCFUtils {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Client", Namespace="http://schemas.datacontract.org/2004/07/WCFServiceWebRoleGarage")]
+    [System.SerializableAttribute()]
+    public partial class Client : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string MailField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NomField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TelField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Mail {
+            get {
+                return this.MailField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.MailField, value) != true)) {
+                    this.MailField = value;
+                    this.RaisePropertyChanged("Mail");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Nom {
+            get {
+                return this.NomField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NomField, value) != true)) {
+                    this.NomField = value;
+                    this.RaisePropertyChanged("Nom");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Tel {
+            get {
+                return this.TelField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TelField, value) != true)) {
+                    this.TelField = value;
+                    this.RaisePropertyChanged("Tel");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WCFUtils.IService")]
     public interface IService {
@@ -299,10 +376,28 @@ namespace WindowsForms.WCFUtils {
         System.Threading.Tasks.Task<string> AjouterOptionAsync(WindowsForms.WCFUtils.Option option);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreerModel", ReplyAction="http://tempuri.org/IService/CreerModelResponse")]
-        bool CreerModel(WindowsForms.WCFUtils.Vehicule vehicule);
+        bool CreerModel(WindowsForms.WCFUtils.Vehicule vehicule, WindowsForms.WCFUtils.Client client);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreerModel", ReplyAction="http://tempuri.org/IService/CreerModelResponse")]
-        System.Threading.Tasks.Task<bool> CreerModelAsync(WindowsForms.WCFUtils.Vehicule vehicule);
+        System.Threading.Tasks.Task<bool> CreerModelAsync(WindowsForms.WCFUtils.Vehicule vehicule, WindowsForms.WCFUtils.Client client);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreerClient", ReplyAction="http://tempuri.org/IService/CreerClientResponse")]
+        string CreerClient(WindowsForms.WCFUtils.Client client);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreerClient", ReplyAction="http://tempuri.org/IService/CreerClientResponse")]
+        System.Threading.Tasks.Task<string> CreerClientAsync(WindowsForms.WCFUtils.Client client);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateDevis", ReplyAction="http://tempuri.org/IService/CreateDevisResponse")]
+        string CreateDevis(WindowsForms.WCFUtils.Vehicule vehicule, WindowsForms.WCFUtils.Client client);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateDevis", ReplyAction="http://tempuri.org/IService/CreateDevisResponse")]
+        System.Threading.Tasks.Task<string> CreateDevisAsync(WindowsForms.WCFUtils.Vehicule vehicule, WindowsForms.WCFUtils.Client client);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SortieUsine", ReplyAction="http://tempuri.org/IService/SortieUsineResponse")]
+        bool SortieUsine(int idVehicule, string plaque);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SortieUsine", ReplyAction="http://tempuri.org/IService/SortieUsineResponse")]
+        System.Threading.Tasks.Task<bool> SortieUsineAsync(int idVehicule, string plaque);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -356,12 +451,36 @@ namespace WindowsForms.WCFUtils {
             return base.Channel.AjouterOptionAsync(option);
         }
         
-        public bool CreerModel(WindowsForms.WCFUtils.Vehicule vehicule) {
-            return base.Channel.CreerModel(vehicule);
+        public bool CreerModel(WindowsForms.WCFUtils.Vehicule vehicule, WindowsForms.WCFUtils.Client client) {
+            return base.Channel.CreerModel(vehicule, client);
         }
         
-        public System.Threading.Tasks.Task<bool> CreerModelAsync(WindowsForms.WCFUtils.Vehicule vehicule) {
-            return base.Channel.CreerModelAsync(vehicule);
+        public System.Threading.Tasks.Task<bool> CreerModelAsync(WindowsForms.WCFUtils.Vehicule vehicule, WindowsForms.WCFUtils.Client client) {
+            return base.Channel.CreerModelAsync(vehicule, client);
+        }
+        
+        public string CreerClient(WindowsForms.WCFUtils.Client client) {
+            return base.Channel.CreerClient(client);
+        }
+        
+        public System.Threading.Tasks.Task<string> CreerClientAsync(WindowsForms.WCFUtils.Client client) {
+            return base.Channel.CreerClientAsync(client);
+        }
+        
+        public string CreateDevis(WindowsForms.WCFUtils.Vehicule vehicule, WindowsForms.WCFUtils.Client client) {
+            return base.Channel.CreateDevis(vehicule, client);
+        }
+        
+        public System.Threading.Tasks.Task<string> CreateDevisAsync(WindowsForms.WCFUtils.Vehicule vehicule, WindowsForms.WCFUtils.Client client) {
+            return base.Channel.CreateDevisAsync(vehicule, client);
+        }
+        
+        public bool SortieUsine(int idVehicule, string plaque) {
+            return base.Channel.SortieUsine(idVehicule, plaque);
+        }
+        
+        public System.Threading.Tasks.Task<bool> SortieUsineAsync(int idVehicule, string plaque) {
+            return base.Channel.SortieUsineAsync(idVehicule, plaque);
         }
     }
 }

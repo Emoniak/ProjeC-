@@ -125,7 +125,7 @@ namespace WindowsForms
 
         private void Submit_Click(object sender, EventArgs e)
         {
-            if (!comboBoxTypes.Text.Equals("") && !comboBoxMarques.Text.Equals("") && !comboBoxModeles.Text.Equals("")&&listeOptions.Count>0)
+            if (!comboBoxTypes.Text.Equals("") && !comboBoxMarques.Text.Equals("") && !comboBoxModeles.Text.Equals("")&&listeOptions!=null && listeOptions.Count>0)
             {
                 WCFUtils.ServiceClient client = new WCFUtils.ServiceClient();
                 WCFUtils.Option[] options = new WCFUtils.Option[listeOptions.Count];
@@ -140,23 +140,21 @@ namespace WindowsForms
                         {
                             MySqlCommand cmd = new MySqlCommand("select caracteristique, NOM_OPTION from toption where NOM_OPTION = '" + listeOptions[i] + "'", cn);
                             MySqlDataReader dr = cmd.ExecuteReader();
-
-                            options[i] = new WCFUtils.Option { Caracteristique = dr["NOM_OPTION"].ToString(), Nom = dr["caracteristique"].ToString() };
-                            vehicule.Options = options;
+                            while (dr.Read())
+                            {
+                                options[i] = new WCFUtils.Option { Caracteristique = dr["caracteristique"].ToString(), Nom = dr["NOM_OPTION"].ToString() };
+                                vehicule.Options = options;
+                            }
+                            dr.Close();
                         }
                     }
                 }
                 vehicule.Marque = comboBoxMarques.Text;
                 vehicule.Categorie = comboBoxTypes.Text;
                 vehicule.Model = comboBoxModeles.Text;
-
-                bool resultat = client.CreerModel(vehicule);
-                if (!resultat)
-                {
-                    MessageBox.Show("Une erreur s'est produite, veuillez réessayer", "Erreur",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-                else this.Dispose();
+                SelectClient select = new SelectClient(vehicule);
+                select.Show();
+                this.Dispose();
             }
             else
             {
