@@ -125,7 +125,7 @@ namespace WindowsForms
 
         private void Submit_Click(object sender, EventArgs e)
         {
-            if (!comboBoxTypes.Text.Equals("") && !comboBoxMarques.Text.Equals("") && !comboBoxModeles.Text.Equals(""))
+            if (!comboBoxTypes.Text.Equals("") && !comboBoxMarques.Text.Equals("") && !comboBoxModeles.Text.Equals("")&&listeOptions.Count>0)
             {
                 WCFUtils.ServiceClient client = new WCFUtils.ServiceClient();
                 WCFUtils.Option[] options = new WCFUtils.Option[listeOptions.Count];
@@ -142,10 +142,10 @@ namespace WindowsForms
                             MySqlDataReader dr = cmd.ExecuteReader();
 
                             options[i] = new WCFUtils.Option { Caracteristique = dr["NOM_OPTION"].ToString(), Nom = dr["caracteristique"].ToString() };
+                            vehicule.Options = options;
                         }
                     }
                 }
-                vehicule.Options = options;
                 vehicule.Marque = comboBoxMarques.Text;
                 vehicule.Categorie = comboBoxTypes.Text;
                 vehicule.Model = comboBoxModeles.Text;

@@ -65,6 +65,12 @@
     <Compile Include="CreateVoiture.Designer.cs">
       <DependentUpon>CreateVoiture.cs</DependentUpon>
     </Compile>
+    <Compile Include="Devis.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Devis.Designer.cs">
+      <DependentUpon>Devis.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Acceuil.cs</DependentUpon>
     </Compile>
