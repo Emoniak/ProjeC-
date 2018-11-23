@@ -28,6 +28,9 @@ namespace WCFServiceWebRoleGarage
 
         [OperationContract]
         string CreerClient(Client client);
+
+        [OperationContract]
+        string CreateDevis(Vehicule vehicule,Client client);
     }
 
 

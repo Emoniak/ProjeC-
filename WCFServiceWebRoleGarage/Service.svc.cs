@@ -31,7 +31,7 @@ namespace WCFServiceWebRoleGarage
                 else
                 {
                     dr.Close();
-                    command.CommandText = "call InsertOption('" + option.Nom + "','" + option.Caracteristique + "')";
+                    command.CommandText = "call InsertOption('" + option.Nom + "','" + option.Caracteristique + "',"+option.Prix+")";
                     command.ExecuteNonQuery();
                     command.CommandText = "SELECT LAST_INSERT_ID() FROM toption";
                     dr = command.ExecuteReader();
@@ -42,15 +42,67 @@ namespace WCFServiceWebRoleGarage
             return "";
         }
 
+        public string CreateDevis(Vehicule vehicule,Client client)
+        {
+            //calcul du prix
+            int prix = 0;
+            foreach (var option in vehicule.Options)
+            {
+                prix += option.Prix;
+            }
+            string idDevis = "";
+            using (MySqlConnection connection = new MySqlConnection(this.connectionString))
+            {
+                string idcli = "";
+                connection.Open();
+                MySqlCommand cmd = new MySqlCommand(@"select id_client from tclient where mail='"+client.Mail+"'",connection);
+                MySqlDataReader dr = cmd.ExecuteReader();
+                if (dr.Read())
+                    idcli = dr[0].ToString();
+                else
+                    idcli = CreerClient(client);
+                dr.Close();
+                cmd.CommandText = @"call creationDevis(" + idcli + "," + prix + ",'" + DateTime.Now.ToString("YYYY-MM-DD HH:MM:SS") + "')";
+                cmd.ExecuteNonQuery();
+
+                cmd.CommandText = "SELECT LAST_INSERT_ID() FROM tdevis";
+                dr = cmd.ExecuteReader();
+                if (dr.Read())
+                    idDevis = dr[0].ToString();
+            }
+            return idDevis;
+        }
+
         public string CreerClient(Client client)
         {
-            throw new NotImplementedException();
+            string idcli = "";
+            using (MySqlConnection conn = new MySqlConnection(this.connectionString))
+            {
+                conn.Open();
+                MySqlCommand command = new MySqlCommand(@"select id_client from tclient where mail='" + client.Mail + "'", conn);
+                MySqlDataReader dr = command.ExecuteReader();
+                if (dr.Read())
+                    idcli = dr[0].ToString();
+                else
+                {
+                    dr.Close();
+                    command.CommandText = "call createClient('" + client.Nom + "','" + client.Tel + "','" + client.Mail + "')";
+                    command.ExecuteNonQuery();
+                    command.CommandText = "SELECT LAST_INSERT_ID() FROM tclient";
+                    dr = command.ExecuteReader();
+                    if (dr.Read())
+                        idcli = dr[0].ToString();
+                }
+
+            }
+            return idcli;
         }
 
         public bool CreerModel(Vehicule vehicule,Client client)
         {
-            string idMarque = "", idModel = "", idcategorie = "",idClient="";
+            string idMarque = "", idModel = "", idcategorie = "",idClient="",idDevis="";
             int version = -1;
+            /*
             string[] idOption = new string[vehicule.Options.Length];
 
             int i = 0;
@@ -58,9 +110,10 @@ namespace WCFServiceWebRoleGarage
             {
                 idOption[i] = AjouterOption(item);
                 i++;
-            }
+            }*/
 
             idClient = CreerClient(client);
+            idDevis = CreateDevis(vehicule,client);
 
             using (MySqlConnection conn = new MySqlConnection(this.connectionString))
             {
@@ -126,10 +179,12 @@ namespace WCFServiceWebRoleGarage
                     dr.Close();
 
                     command.CommandText = @"select version from toption_has_tmodel where id_model=" + idModel + " order by version DESC";
+                    dr = command.ExecuteReader();
                     if (dr.Read())
                         version = Convert.ToInt32(dr[0]) + 1;
                     dr.Close();
                     //ajoue des options
+                    /*
                     for (int j = 0; j < idOption.Length; j++)
                     {
                         if (idOption[j] != "")
@@ -141,11 +196,7 @@ namespace WCFServiceWebRoleGarage
                         }
                         command.ExecuteNonQuery();
                     }
-
-                    //creation devis
-                    string iddevis = "";
-                    //creation facture
-
+                    */
                     //recuperation de l'usine
                     string idusine = "";
                     command.CommandText = "select id_client from tclient where nom_client='usine " + vehicule.Marque + "'";
@@ -155,13 +206,19 @@ namespace WCFServiceWebRoleGarage
                     dr.Close();
 
                     //creation vehicule
-                    command.CommandText = "call CreationVehicule(" + iddevis + "," + idusine + "," + idModel + ")";
+                    command.CommandText = "call CreationVehicule(" + idDevis + "," + idusine + "," + idModel + ")";
                     command.ExecuteNonQuery();
+
+                    //creation facture
+                    command.CommandText = "call CreateFacture(" + idDevis + ",'" + DateTime.Now.ToString("YYYY-MM-DD HH:MM:SS") + "')";
+                    command.ExecuteNonQuery();
+
 
                     transaction.Commit();
                 }
-                catch (Exception)
+                catch (Exception e)
                 {
+                    Console.WriteLine(e.Message);
                     transaction.Rollback();
                     return false;
 
