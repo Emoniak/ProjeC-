@@ -10,6 +10,7 @@ namespace testWCF
     {
         static void Main(string[] args)
         {
+            /*
             ServiceInterne.ServiceVehiculesClient client = new ServiceInterne.ServiceVehiculesClient();
             ServiceInterne.Option option = new ServiceInterne.Option();
 
@@ -18,6 +19,9 @@ namespace testWCF
 
             string retour = client.AjouterOption(option);
             System.Console.WriteLine(retour);
+            Console.ReadLine();
+            */
+            Console.WriteLine(DateTime.Now.ToString("u"));
             Console.ReadLine();
         }
     }

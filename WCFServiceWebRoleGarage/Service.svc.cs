@@ -62,7 +62,7 @@ namespace WCFServiceWebRoleGarage
                 else
                     idcli = CreerClient(client);
                 dr.Close();
-                cmd.CommandText = @"call creationDevis(" + idcli + "," + prix + ",'" + DateTime.Now.ToString("YYYY-MM-DD HH:MM:SS") + "')";
+                cmd.CommandText = @"call creationDevis(" + idcli + "," + prix + ",'" + DateTime.Now.ToString("u") + "')";
                 cmd.ExecuteNonQuery();
 
                 cmd.CommandText = "SELECT LAST_INSERT_ID() FROM tdevis";
@@ -210,7 +210,7 @@ namespace WCFServiceWebRoleGarage
                     command.ExecuteNonQuery();
 
                     //creation facture
-                    command.CommandText = "call CreateFacture(" + idDevis + ",'" + DateTime.Now.ToString("YYYY-MM-DD HH:MM:SS") + "')";
+                    command.CommandText = "call CreateFacture(" + idDevis + ",'" + DateTime.Now.ToString("u") + "')";
                     command.ExecuteNonQuery();
 
 
