@@ -22,5 +22,10 @@ namespace WindowsForms
             CreateVoiture cv = new CreateVoiture();
             cv.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
