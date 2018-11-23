@@ -22,5 +22,11 @@ namespace WindowsForms
             CreateVoiture cv = new CreateVoiture();
             cv.Show();
         }
+
+        private void devis_Click(object sender, EventArgs e)
+        {
+            Devis devis = new Devis();
+            devis.Show();
+        }
     }
 }
