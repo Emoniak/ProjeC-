@@ -249,8 +249,7 @@ namespace WCFServiceWebRoleGarage
                 MySqlDataReader dr;
                 try
                 {
-                    //a refaire apres manger
-                    command.CommandText = "select id_client from tvehicule where id_vehicule=" + idVehicule;
+                    command.CommandText = "select id_client from tdevis where id_devis=(select id_devis from tvehicule where id_vehicule=" + idVehicule+")";
                     dr = command.ExecuteReader();
                     if (dr.Read())
                         idcli = dr[0].ToString();
