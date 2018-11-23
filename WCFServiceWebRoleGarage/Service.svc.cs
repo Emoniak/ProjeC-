@@ -49,7 +49,7 @@ namespace WCFServiceWebRoleGarage
 
         public bool CreerModel(Vehicule vehicule,Client client)
         {
-            string idMarque = "", idModel = "", idcategorie = "";
+            string idMarque = "", idModel = "", idcategorie = "",idClient="";
             int version = -1;
             string[] idOption = new string[vehicule.Options.Length];
 
@@ -59,6 +59,8 @@ namespace WCFServiceWebRoleGarage
                 idOption[i] = AjouterOption(item);
                 i++;
             }
+
+            idClient = CreerClient(client);
 
             using (MySqlConnection conn = new MySqlConnection(this.connectionString))
             {
@@ -140,8 +142,6 @@ namespace WCFServiceWebRoleGarage
                         command.ExecuteNonQuery();
                     }
 
-                    //creation client
-                    string idclient = CreerClient(client);
                     //creation devis
                     string iddevis = "";
 

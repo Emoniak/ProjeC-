@@ -64,7 +64,7 @@
     <None Include="Ressource\DB Vehicle PTE.xls.csv" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Ressource\createbdd.sql" />
+    <Content Include="Ressource\crebas.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
