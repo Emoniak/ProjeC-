@@ -4,17 +4,37 @@
 }
 
 <h2>Index</h2>
-<table>
-    <tr>
-        <th>Nom marque</th>
-    </tr>
     @{
 
         foreach (var item in Model.Vehicules)
         {
+   
+   
+   <table class="table">
+        <thead>
             <tr>
-                <th>@item.marque</th>
+                <th scope="col">#</th>
+                <th scope="col">First</th>
+                <th scope="col">Last</th>
+                <th scope="col">Handle</th>
             </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>@item.marque</td>
+                <button type="button" class="btn btn-primary">Valider</button>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                
+
+
+            </tr>
+          
+        </tbody>
+    </table>
+
         }
 
     }

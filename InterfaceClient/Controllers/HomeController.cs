@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -8,13 +9,24 @@ namespace InterfaceClient
 {
     public class HomeController : Controller
     {
-        public static string cs = @"Server=mysql-serveur.mysql.database.azure.com; Port=3306; Database=db_garage; Uid=AdminGarage@mysql-serveur; Pwd=TOTO1234!; SslMode=Preferred;";
+        public static string cs = ConfigurationManager.ConnectionStrings["cs"].ConnectionString;
         // GET: Home
-        public ActionResult Index()
+        public ActionResult Login()
         {
-            DataVehicule data = new DataVehicule();
-            data.getVehicules();
-            return View(data);
+            return View();
         }
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public ActionResult Login(LoginCli loginCli)
+        {
+            if (loginCli.VerifID())
+            {
+                DataVehicule d = new DataVehicule();
+                d.getVehicules(loginCli.Login);
+                return View("Index",d);
+            }
+            else
+                return View(loginCli);
+       }
     }
 }
