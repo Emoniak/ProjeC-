@@ -32,4 +32,12 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfOption" nillable="true" type="tns:ArrayOfOption" />
+  <xs:complexType name="Client">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Mail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tel" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Client" nillable="true" type="tns:Client" />
 </xs:schema>

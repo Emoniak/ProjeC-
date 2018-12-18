@@ -31,6 +31,24 @@
   <wsdl:message name="IService_CreerModel_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreerModelResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_CreerClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreerClient" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreerClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreerClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreateDevis_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateDevis" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreateDevis_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateDevisResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_SortieUsine_InputMessage">
+    <wsdl:part name="parameters" element="tns:SortieUsine" />
+  </wsdl:message>
+  <wsdl:message name="IService_SortieUsine_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SortieUsineResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetData" message="tns:IService_GetData_InputMessage" />
@@ -47,6 +65,18 @@
     <wsdl:operation name="CreerModel">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/CreerModel" message="tns:IService_CreerModel_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/CreerModelResponse" message="tns:IService_CreerModel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreerClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CreerClient" message="tns:IService_CreerClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreerClientResponse" message="tns:IService_CreerClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateDevis">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateDevis" message="tns:IService_CreateDevis_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateDevisResponse" message="tns:IService_CreateDevis_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SortieUsine">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/SortieUsine" message="tns:IService_SortieUsine_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/SortieUsineResponse" message="tns:IService_SortieUsine_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService" type="tns:IService">
@@ -80,6 +110,33 @@
     </wsdl:operation>
     <wsdl:operation name="CreerModel">
       <soap:operation soapAction="http://tempuri.org/IService/CreerModel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreerClient">
+      <soap:operation soapAction="http://tempuri.org/IService/CreerClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateDevis">
+      <soap:operation soapAction="http://tempuri.org/IService/CreateDevis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SortieUsine">
+      <soap:operation soapAction="http://tempuri.org/IService/SortieUsine" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
