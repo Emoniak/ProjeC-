@@ -58,17 +58,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Connected Services\ServiceInterne\Service.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ServiceInterne\Service1.wsdl" />
-    <None Include="Connected Services\ServiceInterne\ServiceVehicules.xsd">
+    <None Include="Connected Services\ServiceInterne\Service1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\ServiceInterne\ServiceVehicules1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceInterne\ServiceVehicules2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\ServiceInterne\ServiceVehicules3.xsd">
+    <None Include="Connected Services\ServiceInterne\Service2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\ServiceInterne\testWCF.ServiceInterne.CompositeType.datasource">
@@ -82,7 +79,7 @@
     <WCFMetadataStorage Include="Connected Services\ServiceInterne\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\ServiceInterne\ServiceVehicules.disco" />
+    <None Include="Connected Services\ServiceInterne\Service.disco" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Connected Services\ServiceInterne\configuration91.svcinfo" />

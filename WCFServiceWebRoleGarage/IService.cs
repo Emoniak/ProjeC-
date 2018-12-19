@@ -34,6 +34,9 @@ namespace WCFServiceWebRoleGarage
 
         [OperationContract]
         bool SortieUsine(int idVehicule, string plaque);
+
+        [OperationContract]
+        bool createFacture(string idDevis);
     }
 
 

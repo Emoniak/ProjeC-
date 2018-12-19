@@ -10,19 +10,20 @@ namespace testWCF
     {
         static void Main(string[] args)
         {
-            /*
-            ServiceInterne.ServiceVehiculesClient client = new ServiceInterne.ServiceVehiculesClient();
+            ServiceInterne.ServiceClient service = new ServiceInterne.ServiceClient();
             ServiceInterne.Option option = new ServiceInterne.Option();
 
-            option.Nom = "Siege Chauffant";
-            option.Caracteristique = "ameliore le confor en chauffant les fesses";
+            option.Nom = "test2";
+            option.Caracteristique="ta mere";
+            option.Prix = 200;
 
-            string retour = client.AjouterOption(option);
+            string retour = service.AjouterOption(option);
+
             System.Console.WriteLine(retour);
             Console.ReadLine();
-            */
-            Console.WriteLine(DateTime.Now.ToString("u"));
-            Console.ReadLine();
+            
+            //Console.WriteLine(DateTime.Now.ToString("u"));
+            //Console.ReadLine();
         }
     }
 }
