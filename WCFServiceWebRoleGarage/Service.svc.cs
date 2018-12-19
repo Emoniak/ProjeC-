@@ -15,7 +15,7 @@ namespace WCFServiceWebRoleGarage
     // REMARQUE : pour lancer le client test WCF afin de tester ce service, sélectionnez Service1.svc ou Service1.svc.cs dans l'Explorateur de solutions et démarrez le débogage.
     public class Service1 : IService
     {
-        private string connectionString = @"Server=mysql-serveur.mysql.database.azure.com; Database=db_garage; Uid=AdminGarage@mysql-serveur; Pwd=TOTO1234!;";
+        private string connectionString = @"Server=serveurgarage.mysql.database.azure.com; Port=3306; Database=db_garage; Uid=AdminGarage@serveurgarage; Pwd=TOTO1234!;";
         /// <summary>
         /// Ajoute une option dans la bdd
         /// </summary>
