@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WindowsForms.WCFUtils {
+namespace testWCF.Service {
     using System.Runtime.Serialization;
     using System;
     
@@ -173,7 +173,7 @@ namespace WindowsForms.WCFUtils {
         private int NbRoueField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private WindowsForms.WCFUtils.Option[] OptionsField;
+        private testWCF.Service.Option[] OptionsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int PlaqueField;
@@ -241,7 +241,7 @@ namespace WindowsForms.WCFUtils {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public WindowsForms.WCFUtils.Option[] Options {
+        public testWCF.Service.Option[] Options {
             get {
                 return this.OptionsField;
             }
@@ -354,7 +354,7 @@ namespace WindowsForms.WCFUtils {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WCFUtils.IService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Service.IService")]
     public interface IService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetData", ReplyAction="http://tempuri.org/IService/GetDataResponse")]
@@ -364,34 +364,34 @@ namespace WindowsForms.WCFUtils {
         System.Threading.Tasks.Task<string> GetDataAsync(int value);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService/GetDataUsingDataContractResponse")]
-        WindowsForms.WCFUtils.CompositeType GetDataUsingDataContract(WindowsForms.WCFUtils.CompositeType composite);
+        testWCF.Service.CompositeType GetDataUsingDataContract(testWCF.Service.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<WindowsForms.WCFUtils.CompositeType> GetDataUsingDataContractAsync(WindowsForms.WCFUtils.CompositeType composite);
+        System.Threading.Tasks.Task<testWCF.Service.CompositeType> GetDataUsingDataContractAsync(testWCF.Service.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AjouterOption", ReplyAction="http://tempuri.org/IService/AjouterOptionResponse")]
-        string AjouterOption(WindowsForms.WCFUtils.Option option);
+        string AjouterOption(testWCF.Service.Option option);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AjouterOption", ReplyAction="http://tempuri.org/IService/AjouterOptionResponse")]
-        System.Threading.Tasks.Task<string> AjouterOptionAsync(WindowsForms.WCFUtils.Option option);
+        System.Threading.Tasks.Task<string> AjouterOptionAsync(testWCF.Service.Option option);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreerModel", ReplyAction="http://tempuri.org/IService/CreerModelResponse")]
-        bool CreerModel(WindowsForms.WCFUtils.Vehicule vehicule, WindowsForms.WCFUtils.Client client);
+        bool CreerModel(testWCF.Service.Vehicule vehicule, testWCF.Service.Client client);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreerModel", ReplyAction="http://tempuri.org/IService/CreerModelResponse")]
-        System.Threading.Tasks.Task<bool> CreerModelAsync(WindowsForms.WCFUtils.Vehicule vehicule, WindowsForms.WCFUtils.Client client);
+        System.Threading.Tasks.Task<bool> CreerModelAsync(testWCF.Service.Vehicule vehicule, testWCF.Service.Client client);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreerClient", ReplyAction="http://tempuri.org/IService/CreerClientResponse")]
-        string CreerClient(WindowsForms.WCFUtils.Client client);
+        string CreerClient(testWCF.Service.Client client);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreerClient", ReplyAction="http://tempuri.org/IService/CreerClientResponse")]
-        System.Threading.Tasks.Task<string> CreerClientAsync(WindowsForms.WCFUtils.Client client);
+        System.Threading.Tasks.Task<string> CreerClientAsync(testWCF.Service.Client client);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateDevis", ReplyAction="http://tempuri.org/IService/CreateDevisResponse")]
-        string CreateDevis(WindowsForms.WCFUtils.Vehicule vehicule, WindowsForms.WCFUtils.Client client);
+        string CreateDevis(testWCF.Service.Vehicule vehicule, testWCF.Service.Client client);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateDevis", ReplyAction="http://tempuri.org/IService/CreateDevisResponse")]
-        System.Threading.Tasks.Task<string> CreateDevisAsync(WindowsForms.WCFUtils.Vehicule vehicule, WindowsForms.WCFUtils.Client client);
+        System.Threading.Tasks.Task<string> CreateDevisAsync(testWCF.Service.Vehicule vehicule, testWCF.Service.Client client);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SortieUsine", ReplyAction="http://tempuri.org/IService/SortieUsineResponse")]
         bool SortieUsine(int idVehicule, string plaque);
@@ -401,12 +401,12 @@ namespace WindowsForms.WCFUtils {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IServiceChannel : WindowsForms.WCFUtils.IService, System.ServiceModel.IClientChannel {
+    public interface IServiceChannel : testWCF.Service.IService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServiceClient : System.ServiceModel.ClientBase<WindowsForms.WCFUtils.IService>, WindowsForms.WCFUtils.IService {
+    public partial class ServiceClient : System.ServiceModel.ClientBase<testWCF.Service.IService>, testWCF.Service.IService {
         
         public ServiceClient() {
         }
@@ -435,43 +435,43 @@ namespace WindowsForms.WCFUtils {
             return base.Channel.GetDataAsync(value);
         }
         
-        public WindowsForms.WCFUtils.CompositeType GetDataUsingDataContract(WindowsForms.WCFUtils.CompositeType composite) {
+        public testWCF.Service.CompositeType GetDataUsingDataContract(testWCF.Service.CompositeType composite) {
             return base.Channel.GetDataUsingDataContract(composite);
         }
         
-        public System.Threading.Tasks.Task<WindowsForms.WCFUtils.CompositeType> GetDataUsingDataContractAsync(WindowsForms.WCFUtils.CompositeType composite) {
+        public System.Threading.Tasks.Task<testWCF.Service.CompositeType> GetDataUsingDataContractAsync(testWCF.Service.CompositeType composite) {
             return base.Channel.GetDataUsingDataContractAsync(composite);
         }
         
-        public string AjouterOption(WindowsForms.WCFUtils.Option option) {
+        public string AjouterOption(testWCF.Service.Option option) {
             return base.Channel.AjouterOption(option);
         }
         
-        public System.Threading.Tasks.Task<string> AjouterOptionAsync(WindowsForms.WCFUtils.Option option) {
+        public System.Threading.Tasks.Task<string> AjouterOptionAsync(testWCF.Service.Option option) {
             return base.Channel.AjouterOptionAsync(option);
         }
         
-        public bool CreerModel(WindowsForms.WCFUtils.Vehicule vehicule, WindowsForms.WCFUtils.Client client) {
+        public bool CreerModel(testWCF.Service.Vehicule vehicule, testWCF.Service.Client client) {
             return base.Channel.CreerModel(vehicule, client);
         }
         
-        public System.Threading.Tasks.Task<bool> CreerModelAsync(WindowsForms.WCFUtils.Vehicule vehicule, WindowsForms.WCFUtils.Client client) {
+        public System.Threading.Tasks.Task<bool> CreerModelAsync(testWCF.Service.Vehicule vehicule, testWCF.Service.Client client) {
             return base.Channel.CreerModelAsync(vehicule, client);
         }
         
-        public string CreerClient(WindowsForms.WCFUtils.Client client) {
+        public string CreerClient(testWCF.Service.Client client) {
             return base.Channel.CreerClient(client);
         }
         
-        public System.Threading.Tasks.Task<string> CreerClientAsync(WindowsForms.WCFUtils.Client client) {
+        public System.Threading.Tasks.Task<string> CreerClientAsync(testWCF.Service.Client client) {
             return base.Channel.CreerClientAsync(client);
         }
         
-        public string CreateDevis(WindowsForms.WCFUtils.Vehicule vehicule, WindowsForms.WCFUtils.Client client) {
+        public string CreateDevis(testWCF.Service.Vehicule vehicule, testWCF.Service.Client client) {
             return base.Channel.CreateDevis(vehicule, client);
         }
         
-        public System.Threading.Tasks.Task<string> CreateDevisAsync(WindowsForms.WCFUtils.Vehicule vehicule, WindowsForms.WCFUtils.Client client) {
+        public System.Threading.Tasks.Task<string> CreateDevisAsync(testWCF.Service.Vehicule vehicule, testWCF.Service.Client client) {
             return base.Channel.CreateDevisAsync(vehicule, client);
         }
         

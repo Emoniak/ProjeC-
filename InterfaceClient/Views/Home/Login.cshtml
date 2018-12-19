@@ -1,0 +1,22 @@
+﻿@model LoginCli
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Login</h2>
+
+<div class="container">
+    @using (Html.BeginForm("Login", "Home"))
+    {
+        @Html.ValidationSummary()
+        @Html.LabelFor(m => m.Login)
+        @Html.TextBoxFor(m => m.Login)
+        <br />
+        @Html.LabelFor(m => m.MDP)
+        @Html.PasswordFor(m => m.MDP)
+         
+        <input type="submit" value="valider" name="valider" />
+    }
+
+</div>
