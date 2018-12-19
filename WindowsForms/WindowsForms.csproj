@@ -94,6 +94,9 @@
     <EmbeddedResource Include="CreateVoiture.resx">
       <DependentUpon>CreateVoiture.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Acceuil.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ListeOptions.resx">
       <DependentUpon>ListeOptions.cs</DependentUpon>
     </EmbeddedResource>
