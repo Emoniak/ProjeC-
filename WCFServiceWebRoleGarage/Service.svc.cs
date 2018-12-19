@@ -230,6 +230,8 @@ namespace WCFServiceWebRoleGarage
                     command.CommandText = "call CreationVehicule(" + idDevis + "," + idusine + "," + idModel + ")";
                     command.ExecuteNonQuery();
 
+                    createFacture(idDevis);
+
                     transaction.Commit();
                 }
                 catch (Exception e)
@@ -263,6 +265,7 @@ namespace WCFServiceWebRoleGarage
                 if (dr.Read())
                 {
                     dr.Close();
+
                     command.CommandText= "call CreationFacture(" + idDevis+ ",'" + DateTime.Now.ToString("u") + "')";
                     command.ExecuteNonQuery();
                     return true;
