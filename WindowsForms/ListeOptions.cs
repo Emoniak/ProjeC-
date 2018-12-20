@@ -41,25 +41,25 @@ namespace WindowsForms
                 cn.Open();
                 if (dataGridViewOptions.SelectedCells.Count == 1)
                 {
-                    MySqlCommand cmd = new MySqlCommand("select caracteristique from toption where NOM_OPTION = '" + dataGridViewOptions.Rows[e.RowIndex].Cells[e.ColumnIndex].Value + "'", cn);
+                    MySqlCommand cmd = new MySqlCommand("select caracteristique, prix from toption where NOM_OPTION = '" + dataGridViewOptions.Rows[e.RowIndex].Cells[e.ColumnIndex].Value + "'", cn);
                     MySqlDataReader dr = cmd.ExecuteReader();
                     if (dr.Read())
                     {
-                        richTextBoxOption.Text = dr[0].ToString() + "\n";
+                        richTextBoxOption.Text = dr["caracteristique"].ToString() + "\nPrix : " + dr["prix"].ToString() + " €\n";
                     }
                     dr.Close();
                 }
                 else
                 {
-                    MySqlCommand cmd = new MySqlCommand("select caracteristique from toption where NOM_OPTION = '" + dataGridViewOptions.Rows[e.RowIndex].Cells[e.ColumnIndex].Value + "'", cn);
+                    MySqlCommand cmd = new MySqlCommand("select caracteristique, prix from toption where NOM_OPTION = '" + dataGridViewOptions.Rows[e.RowIndex].Cells[e.ColumnIndex].Value + "'", cn);
                     MySqlDataReader dr = cmd.ExecuteReader();
                     if (dr.Read())
                     {
                         if (richTextBoxOption.Text.Length != 0)
                         {
-                            richTextBoxOption.Text += dr[0].ToString() + "\n";
+                            richTextBoxOption.Text += "------\n"+dr["caracteristique"].ToString() + "\nPrix : "+ dr["prix"].ToString()+" €\n";
                         }
-                        else richTextBoxOption.Text = dr[0].ToString() + "\n";
+                        else richTextBoxOption.Text = dr["caracteristique"].ToString() + "\nPrix : " + dr["prix"].ToString() + " €\n";
                     }
                     dr.Close();
                 }
@@ -78,9 +78,26 @@ namespace WindowsForms
 
         private void submit_Click(object sender, EventArgs e)
         {
-            for (int i=0; i<dataGridViewOptions.SelectedCells.Count;i++)
+            using (MySqlConnection cn = new MySqlConnection(Program._cn))
             {
-                CreateVoiture.listeOptions.Add(dataGridViewOptions.SelectedCells[i].Value.ToString());
+                cn.Open();
+                if (dataGridViewOptions.SelectedCells.Count > 0)
+                {
+                    for (int i = 0; i < dataGridViewOptions.SelectedCells.Count; i++)
+                    {
+                        WCFUtils.Option option = new WCFUtils.Option();
+                        MySqlCommand cmd = new MySqlCommand("select caracteristique, prix from toption where NOM_OPTION = '" + dataGridViewOptions.SelectedCells[i].Value.ToString() + "'", cn);
+                        MySqlDataReader dr = cmd.ExecuteReader();
+                        if (dr.Read())
+                        {
+                            option.Nom = dataGridViewOptions.SelectedCells[i].Value.ToString();
+                            option.Prix = Convert.ToInt32(dr["prix"].ToString());
+                            option.Caracteristique = dr["caracteristique"].ToString();
+                        }
+                        dr.Close();
+                        CreateVoiture.listeOptions.Add(option);
+                    }
+                }
             }
             this.Close();
         }

@@ -292,10 +292,7 @@ namespace WCFServiceWebRoleGarage
                 conn.Open();
 
                 MySqlCommand command = conn.CreateCommand();
-                MySqlTransaction transaction;
-                transaction = conn.BeginTransaction();
                 command.Connection = conn;
-                command.Transaction = transaction;
 
                 MySqlDataReader dr;
                 try
@@ -308,17 +305,18 @@ namespace WCFServiceWebRoleGarage
                     command.CommandText = "call sortiUsine(" + idcli + "," + idVehicule + ",'" + plaque + "')";
                     command.ExecuteNonQuery();
 
-                    transaction.Commit();
                     command.CommandText = "select mail from tclient where id_client=" + idcli;
                     dr = command.ExecuteReader();
                     if (dr.Read())
-                        envoieMail(dr[0].ToString());
-                    return true;
+                    {
+                        if (dr[0].ToString() != "")
+                            envoieMail(dr[0].ToString());
+                    }
+                    return true;    
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
-                    transaction.Rollback();
                     return false;
                 }
                 finally

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://wcfgarage.cloudapp.net/Service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WCFServiceWebRoleGarage" />
+  <xs:import schemaLocation="http://servicegarage.cloudapp.net/Service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WCFServiceWebRoleGarage" />
   <xs:element name="GetData">
     <xs:complexType>
       <xs:sequence>
@@ -99,6 +99,34 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="SortieUsineResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="createFacture">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idDevis" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="createFactureResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="createFactureResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="calculerpix">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WCFServiceWebRoleGarage" minOccurs="0" name="options" nillable="true" type="q9:ArrayOfOption" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="calculerpixResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="calculerpixResult" type="xs:int" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
