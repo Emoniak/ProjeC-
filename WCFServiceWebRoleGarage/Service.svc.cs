@@ -391,7 +391,7 @@ namespace WCFServiceWebRoleGarage
                 if(dr.Read())
                     prix = Convert.ToInt32(dr[0]);
                 dr.Close();
-                cmd.CommandText = "select id_model from tvehicule where id_devis=(select id_devis from tfacture where id_facture=5)";
+                cmd.CommandText = "select id_model from tvehicule where id_devis=(select id_devis from tfacture where id_facture="+idFacture+")";
                 dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {
