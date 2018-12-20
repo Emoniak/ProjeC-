@@ -94,8 +94,8 @@
     <EmbeddedResource Include="CreateVoiture.resx">
       <DependentUpon>CreateVoiture.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Acceuil.cs</DependentUpon>
+    <EmbeddedResource Include="Devis.resx">
+      <DependentUpon>Devis.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListeOptions.resx">
       <DependentUpon>ListeOptions.cs</DependentUpon>
@@ -109,20 +109,30 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="SelectClient.resx">
-      <DependentUpon>SelectClient.cs</DependentUpon>
-    </EmbeddedResource>
-    <None Include="Connected Services\WCFUtils\Service.xsd">
+    <None Include="Connected Services\WCFUtils\Service11.wsdl" />
+    <None Include="Connected Services\WCFUtils\Service111.wsdl" />
+    <None Include="Connected Services\WCFUtils\Service3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\WCFUtils\Service1.wsdl" />
-    <None Include="Connected Services\WCFUtils\Service1.xsd">
+    <None Include="Connected Services\WCFUtils\Service31.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\WCFUtils\Service2.xsd">
+    <None Include="Connected Services\WCFUtils\Service32.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WCFUtils\Service33.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WCFUtils\Service34.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\WCFUtils\Service35.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\WCFUtils\WindowsForms.WCFUtils.CompositeType.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\WCFUtils\WindowsForms.WCFUtils.Option.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
@@ -145,9 +155,6 @@
     <WCFMetadataStorage Include="Connected Services\WCFUtils\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\WCFUtils\Service.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Connected Services\WCFUtils\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -158,6 +165,12 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\WCFUtils\Service1.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\WCFUtils\Service11.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

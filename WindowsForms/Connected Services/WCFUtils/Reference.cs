@@ -398,6 +398,24 @@ namespace WindowsForms.WCFUtils {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SortieUsine", ReplyAction="http://tempuri.org/IService/SortieUsineResponse")]
         System.Threading.Tasks.Task<bool> SortieUsineAsync(int idVehicule, string plaque);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/createFacture", ReplyAction="http://tempuri.org/IService/createFactureResponse")]
+        bool createFacture(string idDevis);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/createFacture", ReplyAction="http://tempuri.org/IService/createFactureResponse")]
+        System.Threading.Tasks.Task<bool> createFactureAsync(string idDevis);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/calculerpix", ReplyAction="http://tempuri.org/IService/calculerpixResponse")]
+        int calculerpix(WindowsForms.WCFUtils.Option[] options);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/calculerpix", ReplyAction="http://tempuri.org/IService/calculerpixResponse")]
+        System.Threading.Tasks.Task<int> calculerpixAsync(WindowsForms.WCFUtils.Option[] options);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/listeOptions", ReplyAction="http://tempuri.org/IService/listeOptionsResponse")]
+        WindowsForms.WCFUtils.Option[] listeOptions(string idFacture);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/listeOptions", ReplyAction="http://tempuri.org/IService/listeOptionsResponse")]
+        System.Threading.Tasks.Task<WindowsForms.WCFUtils.Option[]> listeOptionsAsync(string idFacture);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -481,6 +499,30 @@ namespace WindowsForms.WCFUtils {
         
         public System.Threading.Tasks.Task<bool> SortieUsineAsync(int idVehicule, string plaque) {
             return base.Channel.SortieUsineAsync(idVehicule, plaque);
+        }
+        
+        public bool createFacture(string idDevis) {
+            return base.Channel.createFacture(idDevis);
+        }
+        
+        public System.Threading.Tasks.Task<bool> createFactureAsync(string idDevis) {
+            return base.Channel.createFactureAsync(idDevis);
+        }
+        
+        public int calculerpix(WindowsForms.WCFUtils.Option[] options) {
+            return base.Channel.calculerpix(options);
+        }
+        
+        public System.Threading.Tasks.Task<int> calculerpixAsync(WindowsForms.WCFUtils.Option[] options) {
+            return base.Channel.calculerpixAsync(options);
+        }
+        
+        public WindowsForms.WCFUtils.Option[] listeOptions(string idFacture) {
+            return base.Channel.listeOptions(idFacture);
+        }
+        
+        public System.Threading.Tasks.Task<WindowsForms.WCFUtils.Option[]> listeOptionsAsync(string idFacture) {
+            return base.Channel.listeOptionsAsync(idFacture);
         }
     }
 }

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://servicegarage.cloudapp.net/Service.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://servicegarage.cloudapp.net/Service.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://servicegarage.cloudapp.net/Service.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WCFServiceWebRoleGarage" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService_GetData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetData" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetDataUsingDataContract_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataUsingDataContract" />
+  </wsdl:message>
+  <wsdl:message name="IService_GetDataUsingDataContract_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataUsingDataContractResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_AjouterOption_InputMessage">
+    <wsdl:part name="parameters" element="tns:AjouterOption" />
+  </wsdl:message>
+  <wsdl:message name="IService_AjouterOption_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AjouterOptionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreerModel_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreerModel" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreerModel_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreerModelResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreerClient_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreerClient" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreerClient_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreerClientResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreateDevis_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateDevis" />
+  </wsdl:message>
+  <wsdl:message name="IService_CreateDevis_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateDevisResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_SortieUsine_InputMessage">
+    <wsdl:part name="parameters" element="tns:SortieUsine" />
+  </wsdl:message>
+  <wsdl:message name="IService_SortieUsine_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SortieUsineResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_createFacture_InputMessage">
+    <wsdl:part name="parameters" element="tns:createFacture" />
+  </wsdl:message>
+  <wsdl:message name="IService_createFacture_OutputMessage">
+    <wsdl:part name="parameters" element="tns:createFactureResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_calculerpix_InputMessage">
+    <wsdl:part name="parameters" element="tns:calculerpix" />
+  </wsdl:message>
+  <wsdl:message name="IService_calculerpix_OutputMessage">
+    <wsdl:part name="parameters" element="tns:calculerpixResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService_listeOptions_InputMessage">
+    <wsdl:part name="parameters" element="tns:listeOptions" />
+  </wsdl:message>
+  <wsdl:message name="IService_listeOptions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:listeOptionsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService">
+    <wsdl:operation name="GetData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetData" message="tns:IService_GetData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetDataResponse" message="tns:IService_GetData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDataUsingDataContract">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/GetDataUsingDataContract" message="tns:IService_GetDataUsingDataContract_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/GetDataUsingDataContractResponse" message="tns:IService_GetDataUsingDataContract_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AjouterOption">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/AjouterOption" message="tns:IService_AjouterOption_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/AjouterOptionResponse" message="tns:IService_AjouterOption_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreerModel">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CreerModel" message="tns:IService_CreerModel_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreerModelResponse" message="tns:IService_CreerModel_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreerClient">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CreerClient" message="tns:IService_CreerClient_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreerClientResponse" message="tns:IService_CreerClient_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateDevis">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/CreateDevis" message="tns:IService_CreateDevis_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/CreateDevisResponse" message="tns:IService_CreateDevis_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SortieUsine">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/SortieUsine" message="tns:IService_SortieUsine_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/SortieUsineResponse" message="tns:IService_SortieUsine_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createFacture">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/createFacture" message="tns:IService_createFacture_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/createFactureResponse" message="tns:IService_createFacture_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="calculerpix">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/calculerpix" message="tns:IService_calculerpix_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/calculerpixResponse" message="tns:IService_calculerpix_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="listeOptions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/listeOptions" message="tns:IService_listeOptions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/listeOptionsResponse" message="tns:IService_listeOptions_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService" type="tns:IService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetData">
+      <soap:operation soapAction="http://tempuri.org/IService/GetData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDataUsingDataContract">
+      <soap:operation soapAction="http://tempuri.org/IService/GetDataUsingDataContract" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AjouterOption">
+      <soap:operation soapAction="http://tempuri.org/IService/AjouterOption" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreerModel">
+      <soap:operation soapAction="http://tempuri.org/IService/CreerModel" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreerClient">
+      <soap:operation soapAction="http://tempuri.org/IService/CreerClient" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateDevis">
+      <soap:operation soapAction="http://tempuri.org/IService/CreateDevis" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SortieUsine">
+      <soap:operation soapAction="http://tempuri.org/IService/SortieUsine" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createFacture">
+      <soap:operation soapAction="http://tempuri.org/IService/createFacture" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="calculerpix">
+      <soap:operation soapAction="http://tempuri.org/IService/calculerpix" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listeOptions">
+      <soap:operation soapAction="http://tempuri.org/IService/listeOptions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IService" binding="tns:BasicHttpBinding_IService">
+      <soap:address location="http://servicegarage.cloudapp.net/Service.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
