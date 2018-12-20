@@ -97,8 +97,14 @@ namespace WindowsForms
                     }
                     dr.Close();
                 }
+                client.CreerModel(vehicule, cli);
+                MySqlCommand cmd2 = new MySqlCommand("select distinct LAST_INSERT_ID() from tvehicule", cn);
+                MySqlDataReader dr2 = cmd2.ExecuteReader();
+                if (dr2.Read())
+                {
+                    client.SortieUsine(Convert.ToInt32(dr2[0]), "0");
+                }
             }
-            string resultat = client.CreateDevis(vehicule, cli);
             Cursor = Cursors.Default;
             this.Dispose();
         }

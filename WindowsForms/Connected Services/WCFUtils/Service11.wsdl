@@ -61,6 +61,12 @@
   <wsdl:message name="IService_calculerpix_OutputMessage">
     <wsdl:part name="parameters" element="tns:calculerpixResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_listeOptions_InputMessage">
+    <wsdl:part name="parameters" element="tns:listeOptions" />
+  </wsdl:message>
+  <wsdl:message name="IService_listeOptions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:listeOptionsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetData" message="tns:IService_GetData_InputMessage" />
@@ -97,6 +103,10 @@
     <wsdl:operation name="calculerpix">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/calculerpix" message="tns:IService_calculerpix_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/calculerpixResponse" message="tns:IService_calculerpix_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="listeOptions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/listeOptions" message="tns:IService_listeOptions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/listeOptionsResponse" message="tns:IService_listeOptions_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService" type="tns:IService">
@@ -175,6 +185,15 @@
     </wsdl:operation>
     <wsdl:operation name="calculerpix">
       <soap:operation soapAction="http://tempuri.org/IService/calculerpix" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="listeOptions">
+      <soap:operation soapAction="http://tempuri.org/IService/listeOptions" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
