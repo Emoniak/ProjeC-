@@ -49,6 +49,12 @@
   <wsdl:message name="IService_SortieUsine_OutputMessage">
     <wsdl:part name="parameters" element="tns:SortieUsineResponse" />
   </wsdl:message>
+  <wsdl:message name="IService_createFacture_InputMessage">
+    <wsdl:part name="parameters" element="tns:createFacture" />
+  </wsdl:message>
+  <wsdl:message name="IService_createFacture_OutputMessage">
+    <wsdl:part name="parameters" element="tns:createFactureResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/GetData" message="tns:IService_GetData_InputMessage" />
@@ -77,6 +83,10 @@
     <wsdl:operation name="SortieUsine">
       <wsdl:input wsaw:Action="http://tempuri.org/IService/SortieUsine" message="tns:IService_SortieUsine_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService/SortieUsineResponse" message="tns:IService_SortieUsine_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="createFacture">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService/createFacture" message="tns:IService_createFacture_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService/createFactureResponse" message="tns:IService_createFacture_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService" type="tns:IService">
@@ -137,6 +147,15 @@
     </wsdl:operation>
     <wsdl:operation name="SortieUsine">
       <soap:operation soapAction="http://tempuri.org/IService/SortieUsine" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createFacture">
+      <soap:operation soapAction="http://tempuri.org/IService/createFacture" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

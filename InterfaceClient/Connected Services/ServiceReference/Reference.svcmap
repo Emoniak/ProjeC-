@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5883a19c-4d76-4a34-bc7b-70be29757a39" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="0221ee2f-6f30-418c-84cd-ef18fef6fe94" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,11 +22,11 @@
     <MetadataSource Address="http://servicegarage.cloudapp.net/Service.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Service.xsd" MetadataType="Schema" ID="bb5856b2-5b7c-4a63-9eeb-8444d61e3f3e" SourceId="1" SourceUrl="http://servicegarage.cloudapp.net/Service.svc?xsd=xsd1" />
-    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="a87b8f66-fc1e-4e1c-bd78-2a87e10f7a97" SourceId="1" SourceUrl="http://servicegarage.cloudapp.net/Service.svc?wsdl" />
-    <MetadataFile FileName="Service.disco" MetadataType="Disco" ID="a4ac3f61-f852-4460-8da3-004076bfd7c0" SourceId="1" SourceUrl="http://servicegarage.cloudapp.net/Service.svc?disco" />
-    <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="053c663b-69dc-4951-940f-636cfeb24ad2" SourceId="1" SourceUrl="http://servicegarage.cloudapp.net/Service.svc?xsd=xsd2" />
-    <MetadataFile FileName="Service2.xsd" MetadataType="Schema" ID="a3aaf766-af2b-4926-8db2-3762c1315877" SourceId="1" SourceUrl="http://servicegarage.cloudapp.net/Service.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service.xsd" MetadataType="Schema" ID="81bfc148-5b1b-4eb3-8e9c-937745862fed" SourceId="1" SourceUrl="http://servicegarage.cloudapp.net/Service.svc?xsd=xsd1" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="dab50369-77aa-45a3-9a63-9ceb672483b8" SourceId="1" SourceUrl="http://servicegarage.cloudapp.net/Service.svc?wsdl" />
+    <MetadataFile FileName="Service.disco" MetadataType="Disco" ID="1e92bfa2-d1a7-4e00-b348-c5fbcd0e6fe9" SourceId="1" SourceUrl="http://servicegarage.cloudapp.net/Service.svc?disco" />
+    <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="c7849ab8-bdb8-4dfd-83b8-7d287edaf293" SourceId="1" SourceUrl="http://servicegarage.cloudapp.net/Service.svc?xsd=xsd2" />
+    <MetadataFile FileName="Service2.xsd" MetadataType="Schema" ID="fdfcd1c3-31df-482c-a98a-e043c7d22186" SourceId="1" SourceUrl="http://servicegarage.cloudapp.net/Service.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

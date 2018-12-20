@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace testWCF.ServiceInterne {
+namespace InterfaceClient.ServiceReference {
     using System.Runtime.Serialization;
     using System;
     
@@ -173,7 +173,7 @@ namespace testWCF.ServiceInterne {
         private int NbRoueField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private testWCF.ServiceInterne.Option[] OptionsField;
+        private InterfaceClient.ServiceReference.Option[] OptionsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int PlaqueField;
@@ -241,7 +241,7 @@ namespace testWCF.ServiceInterne {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public testWCF.ServiceInterne.Option[] Options {
+        public InterfaceClient.ServiceReference.Option[] Options {
             get {
                 return this.OptionsField;
             }
@@ -354,7 +354,7 @@ namespace testWCF.ServiceInterne {
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceInterne.IService")]
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference.IService")]
     public interface IService {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetData", ReplyAction="http://tempuri.org/IService/GetDataResponse")]
@@ -364,49 +364,55 @@ namespace testWCF.ServiceInterne {
         System.Threading.Tasks.Task<string> GetDataAsync(int value);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService/GetDataUsingDataContractResponse")]
-        testWCF.ServiceInterne.CompositeType GetDataUsingDataContract(testWCF.ServiceInterne.CompositeType composite);
+        InterfaceClient.ServiceReference.CompositeType GetDataUsingDataContract(InterfaceClient.ServiceReference.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/GetDataUsingDataContract", ReplyAction="http://tempuri.org/IService/GetDataUsingDataContractResponse")]
-        System.Threading.Tasks.Task<testWCF.ServiceInterne.CompositeType> GetDataUsingDataContractAsync(testWCF.ServiceInterne.CompositeType composite);
+        System.Threading.Tasks.Task<InterfaceClient.ServiceReference.CompositeType> GetDataUsingDataContractAsync(InterfaceClient.ServiceReference.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AjouterOption", ReplyAction="http://tempuri.org/IService/AjouterOptionResponse")]
-        string AjouterOption(testWCF.ServiceInterne.Option option);
+        string AjouterOption(InterfaceClient.ServiceReference.Option option);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/AjouterOption", ReplyAction="http://tempuri.org/IService/AjouterOptionResponse")]
-        System.Threading.Tasks.Task<string> AjouterOptionAsync(testWCF.ServiceInterne.Option option);
+        System.Threading.Tasks.Task<string> AjouterOptionAsync(InterfaceClient.ServiceReference.Option option);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreerModel", ReplyAction="http://tempuri.org/IService/CreerModelResponse")]
-        bool CreerModel(testWCF.ServiceInterne.Vehicule vehicule, testWCF.ServiceInterne.Client client);
+        bool CreerModel(InterfaceClient.ServiceReference.Vehicule vehicule, InterfaceClient.ServiceReference.Client client);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreerModel", ReplyAction="http://tempuri.org/IService/CreerModelResponse")]
-        System.Threading.Tasks.Task<bool> CreerModelAsync(testWCF.ServiceInterne.Vehicule vehicule, testWCF.ServiceInterne.Client client);
+        System.Threading.Tasks.Task<bool> CreerModelAsync(InterfaceClient.ServiceReference.Vehicule vehicule, InterfaceClient.ServiceReference.Client client);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreerClient", ReplyAction="http://tempuri.org/IService/CreerClientResponse")]
-        string CreerClient(testWCF.ServiceInterne.Client client);
+        string CreerClient(InterfaceClient.ServiceReference.Client client);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreerClient", ReplyAction="http://tempuri.org/IService/CreerClientResponse")]
-        System.Threading.Tasks.Task<string> CreerClientAsync(testWCF.ServiceInterne.Client client);
+        System.Threading.Tasks.Task<string> CreerClientAsync(InterfaceClient.ServiceReference.Client client);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateDevis", ReplyAction="http://tempuri.org/IService/CreateDevisResponse")]
-        string CreateDevis(testWCF.ServiceInterne.Vehicule vehicule, testWCF.ServiceInterne.Client client);
+        string CreateDevis(InterfaceClient.ServiceReference.Vehicule vehicule, InterfaceClient.ServiceReference.Client client);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/CreateDevis", ReplyAction="http://tempuri.org/IService/CreateDevisResponse")]
-        System.Threading.Tasks.Task<string> CreateDevisAsync(testWCF.ServiceInterne.Vehicule vehicule, testWCF.ServiceInterne.Client client);
+        System.Threading.Tasks.Task<string> CreateDevisAsync(InterfaceClient.ServiceReference.Vehicule vehicule, InterfaceClient.ServiceReference.Client client);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SortieUsine", ReplyAction="http://tempuri.org/IService/SortieUsineResponse")]
         bool SortieUsine(int idVehicule, string plaque);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/SortieUsine", ReplyAction="http://tempuri.org/IService/SortieUsineResponse")]
         System.Threading.Tasks.Task<bool> SortieUsineAsync(int idVehicule, string plaque);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/createFacture", ReplyAction="http://tempuri.org/IService/createFactureResponse")]
+        bool createFacture(string idDevis);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService/createFacture", ReplyAction="http://tempuri.org/IService/createFactureResponse")]
+        System.Threading.Tasks.Task<bool> createFactureAsync(string idDevis);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IServiceChannel : testWCF.ServiceInterne.IService, System.ServiceModel.IClientChannel {
+    public interface IServiceChannel : InterfaceClient.ServiceReference.IService, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ServiceClient : System.ServiceModel.ClientBase<testWCF.ServiceInterne.IService>, testWCF.ServiceInterne.IService {
+    public partial class ServiceClient : System.ServiceModel.ClientBase<InterfaceClient.ServiceReference.IService>, InterfaceClient.ServiceReference.IService {
         
         public ServiceClient() {
         }
@@ -435,43 +441,43 @@ namespace testWCF.ServiceInterne {
             return base.Channel.GetDataAsync(value);
         }
         
-        public testWCF.ServiceInterne.CompositeType GetDataUsingDataContract(testWCF.ServiceInterne.CompositeType composite) {
+        public InterfaceClient.ServiceReference.CompositeType GetDataUsingDataContract(InterfaceClient.ServiceReference.CompositeType composite) {
             return base.Channel.GetDataUsingDataContract(composite);
         }
         
-        public System.Threading.Tasks.Task<testWCF.ServiceInterne.CompositeType> GetDataUsingDataContractAsync(testWCF.ServiceInterne.CompositeType composite) {
+        public System.Threading.Tasks.Task<InterfaceClient.ServiceReference.CompositeType> GetDataUsingDataContractAsync(InterfaceClient.ServiceReference.CompositeType composite) {
             return base.Channel.GetDataUsingDataContractAsync(composite);
         }
         
-        public string AjouterOption(testWCF.ServiceInterne.Option option) {
+        public string AjouterOption(InterfaceClient.ServiceReference.Option option) {
             return base.Channel.AjouterOption(option);
         }
         
-        public System.Threading.Tasks.Task<string> AjouterOptionAsync(testWCF.ServiceInterne.Option option) {
+        public System.Threading.Tasks.Task<string> AjouterOptionAsync(InterfaceClient.ServiceReference.Option option) {
             return base.Channel.AjouterOptionAsync(option);
         }
         
-        public bool CreerModel(testWCF.ServiceInterne.Vehicule vehicule, testWCF.ServiceInterne.Client client) {
+        public bool CreerModel(InterfaceClient.ServiceReference.Vehicule vehicule, InterfaceClient.ServiceReference.Client client) {
             return base.Channel.CreerModel(vehicule, client);
         }
         
-        public System.Threading.Tasks.Task<bool> CreerModelAsync(testWCF.ServiceInterne.Vehicule vehicule, testWCF.ServiceInterne.Client client) {
+        public System.Threading.Tasks.Task<bool> CreerModelAsync(InterfaceClient.ServiceReference.Vehicule vehicule, InterfaceClient.ServiceReference.Client client) {
             return base.Channel.CreerModelAsync(vehicule, client);
         }
         
-        public string CreerClient(testWCF.ServiceInterne.Client client) {
+        public string CreerClient(InterfaceClient.ServiceReference.Client client) {
             return base.Channel.CreerClient(client);
         }
         
-        public System.Threading.Tasks.Task<string> CreerClientAsync(testWCF.ServiceInterne.Client client) {
+        public System.Threading.Tasks.Task<string> CreerClientAsync(InterfaceClient.ServiceReference.Client client) {
             return base.Channel.CreerClientAsync(client);
         }
         
-        public string CreateDevis(testWCF.ServiceInterne.Vehicule vehicule, testWCF.ServiceInterne.Client client) {
+        public string CreateDevis(InterfaceClient.ServiceReference.Vehicule vehicule, InterfaceClient.ServiceReference.Client client) {
             return base.Channel.CreateDevis(vehicule, client);
         }
         
-        public System.Threading.Tasks.Task<string> CreateDevisAsync(testWCF.ServiceInterne.Vehicule vehicule, testWCF.ServiceInterne.Client client) {
+        public System.Threading.Tasks.Task<string> CreateDevisAsync(InterfaceClient.ServiceReference.Vehicule vehicule, InterfaceClient.ServiceReference.Client client) {
             return base.Channel.CreateDevisAsync(vehicule, client);
         }
         
@@ -481,6 +487,14 @@ namespace testWCF.ServiceInterne {
         
         public System.Threading.Tasks.Task<bool> SortieUsineAsync(int idVehicule, string plaque) {
             return base.Channel.SortieUsineAsync(idVehicule, plaque);
+        }
+        
+        public bool createFacture(string idDevis) {
+            return base.Channel.createFacture(idDevis);
+        }
+        
+        public System.Threading.Tasks.Task<bool> createFactureAsync(string idDevis) {
+            return base.Channel.createFactureAsync(idDevis);
         }
     }
 }

@@ -10,10 +10,13 @@ namespace InterfaceClient
     {
         public struct vehicule
         {
+            public string id { get; set; }
             public string marque { get; set; }
             public string model { get; set; }
-            public string[] option { get; set; }
+            public string[] options { get; set; }
+            public string textOption { get; set; }
         };
+
 
         public List<vehicule> Vehicules = new List<vehicule>();
 
@@ -31,13 +34,15 @@ namespace InterfaceClient
                 }
                 conn.Close();
             }
+
         }
 
         private vehicule getInfo(string id_v,string idModel)
         {
             string marque="", model="";
-            List<string> option=new List<string>();
+            List<string> options=new List<string>();
             int id_marque = 0;
+            string formatOption = "";
 
             using (MySqlConnection conn = new MySqlConnection(HomeController.cs))
             {
@@ -61,10 +66,14 @@ namespace InterfaceClient
                 cmd.CommandText = "select NOM_OPTION from toption where id_option in (select id_option from toption_has_tmodel where id_model =" + idModel + " and version =1)";
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
-                    option.Add(dr[0].ToString());
+                {
+                    options.Add(dr[0].ToString());
+                    formatOption += dr[0].ToString() + "\n";
+                }
+
             }
 
-            return new vehicule { marque = marque, model = model, option = option.ToArray() };
+            return new vehicule { id=id_v, marque = marque, model = model, options = options.ToArray(), textOption=formatOption };
         }
     }
 }

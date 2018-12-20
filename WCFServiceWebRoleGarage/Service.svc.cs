@@ -15,7 +15,7 @@ namespace WCFServiceWebRoleGarage
     // REMARQUE : pour lancer le client test WCF afin de tester ce service, sélectionnez Service1.svc ou Service1.svc.cs dans l'Explorateur de solutions et démarrez le débogage.
     public class Service1 : IService
     {
-        private string connectionString = @"Server=mysql-serveur.mysql.database.azure.com; Database=db_garage; Uid=AdminGarage@mysql-serveur; Pwd=TOTO1234!;";
+        private string connectionString = @"Server=serveurgarage.mysql.database.azure.com; Port=3306; Database=db_garage; Uid=AdminGarage@serveurgarage; Pwd=TOTO1234!;";
         /// <summary>
         /// Ajoute une option dans la bdd
         /// </summary>
@@ -133,9 +133,6 @@ namespace WCFServiceWebRoleGarage
                 i++;
             }
 
-            idClient = CreerClient(client);
-            idDevis = CreateDevis(vehicule,client);
-
             using (MySqlConnection conn = new MySqlConnection(this.connectionString))
             {
                 conn.Open();
@@ -147,6 +144,9 @@ namespace WCFServiceWebRoleGarage
                 command.Transaction = transaction;
 
                 MySqlDataReader dr;
+
+                idClient = CreerClient(client);
+                idDevis = CreateDevis(vehicule, client);
 
                 try
                 {
@@ -230,10 +230,7 @@ namespace WCFServiceWebRoleGarage
                     command.CommandText = "call CreationVehicule(" + idDevis + "," + idusine + "," + idModel + ")";
                     command.ExecuteNonQuery();
 
-                    //creation facture
-                    command.CommandText = "call CreateFacture(" + idDevis + ",'" + DateTime.Now.ToString("u") + "')";
-                    command.ExecuteNonQuery();
-
+                    createFacture(idDevis);
 
                     transaction.Commit();
                 }
@@ -253,6 +250,33 @@ namespace WCFServiceWebRoleGarage
             return true;
         }
 
+        public bool createFacture(string idDevis)
+        {
+            using (MySqlConnection connection = new MySqlConnection(this.connectionString))
+            {
+                connection.Open();
+                MySqlCommand command = new MySqlCommand("select id_Facture from tFacture where id_devis=" + idDevis, connection);
+                MySqlDataReader dr = command.ExecuteReader();
+                if (dr.Read())
+                    return false;
+                dr.Close();
+                command.CommandText = "select id_devis from tdevis where id_devis="+idDevis;
+                dr = command.ExecuteReader();
+                if (dr.Read())
+                {
+                    dr.Close();
+
+                    command.CommandText= "call CreationFacture(" + idDevis+ ",'" + DateTime.Now.ToString("u") + "')";
+                    command.ExecuteNonQuery();
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+        }
+
         /// <summary>
         /// spécifie la fin de production et envois un mail au client
         /// </summary>
@@ -268,10 +292,7 @@ namespace WCFServiceWebRoleGarage
                 conn.Open();
 
                 MySqlCommand command = conn.CreateCommand();
-                MySqlTransaction transaction;
-                transaction = conn.BeginTransaction();
                 command.Connection = conn;
-                command.Transaction = transaction;
 
                 MySqlDataReader dr;
                 try
@@ -284,17 +305,18 @@ namespace WCFServiceWebRoleGarage
                     command.CommandText = "call sortiUsine(" + idcli + "," + idVehicule + ",'" + plaque + "')";
                     command.ExecuteNonQuery();
 
-                    transaction.Commit();
                     command.CommandText = "select mail from tclient where id_client=" + idcli;
                     dr = command.ExecuteReader();
                     if (dr.Read())
-                        envoieMail(dr[0].ToString());
-                    return true;
+                    {
+                        if (dr[0].ToString() != "")
+                            envoieMail(dr[0].ToString());
+                    }
+                    return true;    
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
-                    transaction.Rollback();
                     return false;
                 }
                 finally

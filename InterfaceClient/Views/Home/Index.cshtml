@@ -4,38 +4,31 @@
 }
 
 <h2>Index</h2>
-    @{
+@{
 
-        foreach (var item in Model.Vehicules)
-        {
-   
-   
-   <table class="table">
-        <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>@item.marque</td>
-                <button type="button" class="btn btn-primary">Valider</button>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                
+    foreach (var item in Model.Vehicules)
+    {
 
 
-            </tr>
-          
-        </tbody>
-    </table>
-
-        }
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Modèle</th>
+                    <th scope="col">Marque</th>
+                    <th scope="col">Option</th>
+                    <th scope="col">Validation</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>@item.model</td>
+                    <td>@item.marque</td>
+                    <td>@item.textOption</td>
+                    <td>@Html.ActionLink("Valider", "Validation", "Home",new { idvehicule=item.id, data=Model }, new { @class = "" })</td>
+                </tr>
+            </tbody>
+        </table>
 
     }
-</table>
+
+}
