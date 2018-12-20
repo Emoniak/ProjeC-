@@ -19,14 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://wcfgarage.cloudapp.net/Service.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://servicegarage.cloudapp.net/Service.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Service.xsd" MetadataType="Schema" ID="747bbe62-42bb-4f27-83fb-16aba18f08e8" SourceId="1" SourceUrl="http://wcfgarage.cloudapp.net/Service.svc?xsd=xsd0" />
-    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="3609c09e-6da1-4705-9352-2d96b950cfee" SourceId="1" SourceUrl="http://wcfgarage.cloudapp.net/Service.svc?wsdl" />
-    <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="c3c9ce8f-f619-457b-983a-1dcd45148cb6" SourceId="1" SourceUrl="http://wcfgarage.cloudapp.net/Service.svc?xsd=xsd2" />
-    <MetadataFile FileName="Service.disco" MetadataType="Disco" ID="4c5cd391-6b87-4bac-818e-035879ea74af" SourceId="1" SourceUrl="http://wcfgarage.cloudapp.net/Service.svc?disco" />
-    <MetadataFile FileName="Service2.xsd" MetadataType="Schema" ID="9ad6e861-a32f-413a-a32f-8c99c064984c" SourceId="1" SourceUrl="http://wcfgarage.cloudapp.net/Service.svc?xsd=xsd1" />
+    <MetadataFile FileName="Service3.xsd" MetadataType="Schema" ID="d21f4fe9-d92c-404a-964b-7d3bd73bdcc9" SourceId="1" SourceUrl="http://servicegarage.cloudapp.net/Service.svc?xsd=xsd1" />
+    <MetadataFile FileName="Service11.wsdl" MetadataType="Wsdl" ID="06bc3996-0b54-425c-8981-625ff1f4e563" SourceId="1" SourceUrl="http://servicegarage.cloudapp.net/Service.svc?wsdl" />
+    <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="04ecfd45-06a8-4382-a1a4-497a6c82a0d3" SourceId="1" SourceUrl="http://servicegarage.cloudapp.net/Service.svc?disco" />
+    <MetadataFile FileName="Service31.xsd" MetadataType="Schema" ID="e40baea9-bfa5-4f83-abf1-e9761c5cf0d5" SourceId="1" SourceUrl="http://servicegarage.cloudapp.net/Service.svc?xsd=xsd2" />
+    <MetadataFile FileName="Service32.xsd" MetadataType="Schema" ID="59dd1874-cab9-4a98-adc9-5a4df726421c" SourceId="1" SourceUrl="http://servicegarage.cloudapp.net/Service.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

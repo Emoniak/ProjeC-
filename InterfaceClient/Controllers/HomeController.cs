@@ -36,10 +36,11 @@ namespace InterfaceClient
             string plaque = "";
             Random random = new Random();
 
-            plaque+=random.Next(00, 99).ToString("00");
             plaque += Convert.ToChar(random.Next(65, 90));
             plaque += Convert.ToChar(random.Next(65, 90));
-            plaque += random.Next(00, 99).ToString("00");
+            plaque += random.Next(00, 999).ToString("000");
+            plaque += Convert.ToChar(random.Next(65, 90));
+            plaque += Convert.ToChar(random.Next(65, 90));
 
             ServiceReference.ServiceClient client = new ServiceReference.ServiceClient();
             client.SortieUsine(Convert.ToInt32(idvehicule), plaque);

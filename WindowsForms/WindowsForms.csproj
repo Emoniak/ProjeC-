@@ -94,9 +94,6 @@
     <EmbeddedResource Include="CreateVoiture.resx">
       <DependentUpon>CreateVoiture.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Acceuil.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ListeOptions.resx">
       <DependentUpon>ListeOptions.cs</DependentUpon>
     </EmbeddedResource>
@@ -112,14 +109,14 @@
     <EmbeddedResource Include="SelectClient.resx">
       <DependentUpon>SelectClient.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Connected Services\WCFUtils\Service.xsd">
+    <None Include="Connected Services\WCFUtils\Service11.wsdl" />
+    <None Include="Connected Services\WCFUtils\Service3.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\WCFUtils\Service1.wsdl" />
-    <None Include="Connected Services\WCFUtils\Service1.xsd">
+    <None Include="Connected Services\WCFUtils\Service31.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\WCFUtils\Service2.xsd">
+    <None Include="Connected Services\WCFUtils\Service32.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\WCFUtils\WindowsForms.WCFUtils.CompositeType.datasource">
@@ -145,9 +142,6 @@
     <WCFMetadataStorage Include="Connected Services\WCFUtils\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Connected Services\WCFUtils\Service.disco" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Connected Services\WCFUtils\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
@@ -158,6 +152,9 @@
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\WCFUtils\Service1.disco" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

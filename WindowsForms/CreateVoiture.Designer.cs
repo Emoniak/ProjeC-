@@ -39,6 +39,8 @@
             this.exit = new System.Windows.Forms.Button();
             this.Submit = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
+            this.btnSupprimer = new System.Windows.Forms.Button();
+            this.txtPrix = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOptions)).BeginInit();
             this.SuspendLayout();
             // 
@@ -144,11 +146,31 @@
             this.btnRefresh.UseVisualStyleBackColor = true;
             this.btnRefresh.Click += new System.EventHandler(this.btnRefresh_Click);
             // 
+            // btnSupprimer
+            // 
+            this.btnSupprimer.Location = new System.Drawing.Point(265, 173);
+            this.btnSupprimer.Name = "btnSupprimer";
+            this.btnSupprimer.Size = new System.Drawing.Size(80, 52);
+            this.btnSupprimer.TabIndex = 9;
+            this.btnSupprimer.Text = "Supprimer l\'option sélectionnée";
+            this.btnSupprimer.UseVisualStyleBackColor = true;
+            this.btnSupprimer.Click += new System.EventHandler(this.btnSupprimer_Click);
+            // 
+            // txtPrix
+            // 
+            this.txtPrix.AutoSize = true;
+            this.txtPrix.Location = new System.Drawing.Point(265, 424);
+            this.txtPrix.Name = "txtPrix";
+            this.txtPrix.Size = new System.Drawing.Size(0, 13);
+            this.txtPrix.TabIndex = 10;
+            // 
             // CreateVoiture
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(381, 503);
+            this.Controls.Add(this.txtPrix);
+            this.Controls.Add(this.btnSupprimer);
             this.Controls.Add(this.btnRefresh);
             this.Controls.Add(this.Submit);
             this.Controls.Add(this.exit);
@@ -182,5 +204,7 @@
         private System.Windows.Forms.Button exit;
         private System.Windows.Forms.Button Submit;
         private System.Windows.Forms.Button btnRefresh;
+        private System.Windows.Forms.Button btnSupprimer;
+        private System.Windows.Forms.Label txtPrix;
     }
 }
