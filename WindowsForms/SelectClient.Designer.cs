@@ -37,6 +37,7 @@
             this.txtTel = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnValider = new System.Windows.Forms.Button();
+            this.btnCreateDevis = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClients)).BeginInit();
             this.SuspendLayout();
             // 
@@ -116,11 +117,22 @@
             this.btnValider.UseVisualStyleBackColor = true;
             this.btnValider.Click += new System.EventHandler(this.btnValider_Click);
             // 
+            // btnCreateDevis
+            // 
+            this.btnCreateDevis.Location = new System.Drawing.Point(313, 393);
+            this.btnCreateDevis.Name = "btnCreateDevis";
+            this.btnCreateDevis.Size = new System.Drawing.Size(75, 32);
+            this.btnCreateDevis.TabIndex = 9;
+            this.btnCreateDevis.Text = "Créer devis";
+            this.btnCreateDevis.UseVisualStyleBackColor = true;
+            this.btnCreateDevis.Click += new System.EventHandler(this.btnCreateDevis_Click);
+            // 
             // SelectClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(400, 450);
+            this.Controls.Add(this.btnCreateDevis);
             this.Controls.Add(this.btnValider);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtTel);
@@ -150,5 +162,6 @@
         private System.Windows.Forms.TextBox txtTel;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnValider;
+        private System.Windows.Forms.Button btnCreateDevis;
     }
 }

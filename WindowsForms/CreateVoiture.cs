@@ -13,7 +13,7 @@ namespace WindowsForms
 {
     public partial class CreateVoiture : Form
     {
-        public static List<String> listeOptions = new List<string>();
+        public static List<WCFUtils.Option> listeOptions = new List<WCFUtils.Option>();
         public static DataGridView staticDGVOptions= null;
 
 
@@ -110,12 +110,16 @@ namespace WindowsForms
             {
                 DataTable dt = new DataTable();
                 dt.Columns.Add("nomOption");
-                foreach (String nom in listeOptions)
+                foreach (WCFUtils.Option nom in listeOptions)
                 {
-                    dt.Rows.Add(nom);
+                    dt.Rows.Add(nom.Nom);
                 }
                 dataGridViewOptions.DataSource = dt;
+                WCFUtils.ServiceClient client = new WCFUtils.ServiceClient();
+                
+                txtPrix.Text = client.calculerpix(listeOptions.ToArray()).ToString()+" €";
             }
+            else dataGridViewOptions.DataSource = null;
         }
 
         private void exit_Click(object sender, EventArgs e)
@@ -138,11 +142,11 @@ namespace WindowsForms
                         cn.Open();
                         for (int i = 0; i < listeOptions.Count; i++)
                         {
-                            MySqlCommand cmd = new MySqlCommand("select caracteristique, NOM_OPTION from toption where NOM_OPTION = '" + listeOptions[i] + "'", cn);
+                            MySqlCommand cmd = new MySqlCommand("select caracteristique, prix, NOM_OPTION from toption where NOM_OPTION = '" + listeOptions[i].Nom + "'", cn);
                             MySqlDataReader dr = cmd.ExecuteReader();
                             while (dr.Read())
                             {
-                                options[i] = new WCFUtils.Option { Caracteristique = dr["caracteristique"].ToString(), Nom = dr["NOM_OPTION"].ToString() };
+                                options[i] = new WCFUtils.Option { Caracteristique = dr["caracteristique"].ToString(), Nom = dr["NOM_OPTION"].ToString(), Prix = Convert.ToInt32(dr["prix"]) };
                                 vehicule.Options = options;
                             }
                             dr.Close();
@@ -161,6 +165,24 @@ namespace WindowsForms
                 MessageBox.Show("Veuillez remplir tous les champs", "Erreur",
                 MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void btnSupprimer_Click(object sender, EventArgs e)
+        {
+            //if (dataGridViewOptions.SelectedCells.Count>0)
+            {
+                for (int i = 0; i < dataGridViewOptions.SelectedCells.Count; i++)
+                {
+                    for (int i2 = 0; i2 < listeOptions.Count; i2++)
+                    {
+                        if (dataGridViewOptions.SelectedCells[i].Value.ToString().Equals(listeOptions[i2].Nom))
+                        {
+                            listeOptions.Remove(listeOptions[i2]);
+                        }
+                    }
+                }
+            }
+            onLoad();
         }
     }
 }

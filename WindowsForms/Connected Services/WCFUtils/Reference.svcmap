@@ -22,11 +22,11 @@
     <MetadataSource Address="http://servicegarage.cloudapp.net/Service.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Service33.xsd" MetadataType="Schema" ID="41db69bc-5e5e-4fe6-9782-54ca5d5e7a3f" SourceId="1" SourceUrl="http://servicegarage.cloudapp.net/Service.svc?xsd=xsd1" />
-    <MetadataFile FileName="Service111.wsdl" MetadataType="Wsdl" ID="33cf0e2c-0e34-4811-8f09-4a857a9f0f79" SourceId="1" SourceUrl="http://servicegarage.cloudapp.net/Service.svc?wsdl" />
-    <MetadataFile FileName="Service11.disco" MetadataType="Disco" ID="27aa81f0-3d02-443c-8ed0-84c0715ee561" SourceId="1" SourceUrl="http://servicegarage.cloudapp.net/Service.svc?disco" />
-    <MetadataFile FileName="Service34.xsd" MetadataType="Schema" ID="3e51361b-4bd7-4d57-a799-c985d0ffc066" SourceId="1" SourceUrl="http://servicegarage.cloudapp.net/Service.svc?xsd=xsd2" />
-    <MetadataFile FileName="Service35.xsd" MetadataType="Schema" ID="c4682b95-2c9c-434a-9401-6807dad5e1ac" SourceId="1" SourceUrl="http://servicegarage.cloudapp.net/Service.svc?xsd=xsd0" />
+    <MetadataFile FileName="Service3.xsd" MetadataType="Schema" ID="d21f4fe9-d92c-404a-964b-7d3bd73bdcc9" SourceId="1" SourceUrl="http://servicegarage.cloudapp.net/Service.svc?xsd=xsd1" />
+    <MetadataFile FileName="Service11.wsdl" MetadataType="Wsdl" ID="06bc3996-0b54-425c-8981-625ff1f4e563" SourceId="1" SourceUrl="http://servicegarage.cloudapp.net/Service.svc?wsdl" />
+    <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="04ecfd45-06a8-4382-a1a4-497a6c82a0d3" SourceId="1" SourceUrl="http://servicegarage.cloudapp.net/Service.svc?disco" />
+    <MetadataFile FileName="Service31.xsd" MetadataType="Schema" ID="e40baea9-bfa5-4f83-abf1-e9761c5cf0d5" SourceId="1" SourceUrl="http://servicegarage.cloudapp.net/Service.svc?xsd=xsd2" />
+    <MetadataFile FileName="Service32.xsd" MetadataType="Schema" ID="59dd1874-cab9-4a98-adc9-5a4df726421c" SourceId="1" SourceUrl="http://servicegarage.cloudapp.net/Service.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

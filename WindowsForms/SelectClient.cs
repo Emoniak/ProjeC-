@@ -37,6 +37,7 @@ namespace WindowsForms
 
         private void btnValider_Click(object sender, EventArgs e)
         {
+            Cursor = Cursors.WaitCursor;
             WCFUtils.ServiceClient client = new WCFUtils.ServiceClient();
             WCFUtils.Client cli = new WCFUtils.Client();
             if (txtNom.Text!="")
@@ -67,8 +68,45 @@ namespace WindowsForms
             }
             else
             {
+                Cursor = Cursors.Default;
                 this.Dispose();
             }
+        }
+
+        private void btnCreateDevis_Click(object sender, EventArgs e)
+        {
+            Cursor = Cursors.WaitCursor;
+            WCFUtils.ServiceClient client = new WCFUtils.ServiceClient();
+            WCFUtils.Client cli = new WCFUtils.Client();
+            if (txtNom.Text != "")
+            {
+                cli.Nom = txtNom.Text;
+                if (txtMail.Text != "") cli.Mail = txtMail.Text;
+                if (txtTel.Text != "") cli.Tel = txtTel.Text;
+            }
+            using (MySqlConnection cn = new MySqlConnection(Program._cn))
+            {
+                cn.Open();
+                for (int i = 0; i < dataGridViewClients.SelectedCells.Count; i++)
+                {
+                    MySqlCommand cmd = new MySqlCommand("select NOM_CLIENT, TEL, MAIL from tclient where NOM_CLIENT = '" + dataGridViewClients.SelectedCells[i] + "'", cn);
+                    MySqlDataReader dr = cmd.ExecuteReader();
+                    while (dr.Read())
+                    {
+                        cli = new WCFUtils.Client { Mail = dr["MAIL"].ToString(), Nom = dr["NOM_CLIENT"].ToString(), Tel = dr["TEL"].ToString() };
+                    }
+                    dr.Close();
+                }
+                client.CreerModel(vehicule, cli);
+                MySqlCommand cmd2 = new MySqlCommand("select distinct LAST_INSERT_ID() from tvehicule", cn);
+                MySqlDataReader dr2 = cmd2.ExecuteReader();
+                if (dr2.Read())
+                {
+                    client.SortieUsine(Convert.ToInt32(dr2[0]), "0");
+                }
+            }
+            Cursor = Cursors.Default;
+            this.Dispose();
         }
     }
 }

@@ -102,4 +102,46 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="createFacture">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idDevis" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="createFactureResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="createFactureResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="calculerpix">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WCFServiceWebRoleGarage" minOccurs="0" name="options" nillable="true" type="q9:ArrayOfOption" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="calculerpixResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="calculerpixResult" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listeOptions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idFacture" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="listeOptionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WCFServiceWebRoleGarage" minOccurs="0" name="listeOptionsResult" nillable="true" type="q10:ArrayOfOption" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

@@ -10,6 +10,7 @@ namespace InterfaceClient
     public class HomeController : Controller
     {
         public static string cs = ConfigurationManager.ConnectionStrings["cs"].ConnectionString;
+        public static string id = "";
         // GET: Home
         public ActionResult Login()
         {
@@ -21,12 +22,33 @@ namespace InterfaceClient
         {
             if (loginCli.VerifID())
             {
+                id = loginCli.Login;
                 DataVehicule d = new DataVehicule();
-                d.getVehicules(loginCli.Login);
+                d.getVehicules(id);
                 return View("Index",d);
             }
             else
                 return View(loginCli);
-       }
+        }
+
+        public ActionResult Validation(string idvehicule,DataVehicule data)
+        {
+            string plaque = "";
+            Random random = new Random();
+
+            plaque += Convert.ToChar(random.Next(65, 90));
+            plaque += Convert.ToChar(random.Next(65, 90));
+            plaque += random.Next(00, 999).ToString("000");
+            plaque += Convert.ToChar(random.Next(65, 90));
+            plaque += Convert.ToChar(random.Next(65, 90));
+
+            ServiceReference.ServiceClient client = new ServiceReference.ServiceClient();
+            client.SortieUsine(Convert.ToInt32(idvehicule), plaque);
+
+            DataVehicule d = new DataVehicule();
+            d.getVehicules(id);
+            return View("Index", d);
+
+        }
     }
 }

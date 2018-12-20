@@ -16,7 +16,7 @@ namespace InterfaceClient
         private string login;
         private string mdp;
 
-        [Display(Name = "mdp")]
+        [Display(Name = "Mot de passe")]
         [Required]
         public string MDP
         {
@@ -24,7 +24,7 @@ namespace InterfaceClient
             set { mdp = value; }
         }
 
-        [Display(Name = "identifiant")]
+        [Display(Name = "Identifiant")]
         [Required]
         public string Login
         {
@@ -41,6 +41,7 @@ namespace InterfaceClient
                 MySqlDataReader dr = command.ExecuteReader();
                 if (dr.Read())
                 {
+                    string temp = dr[0].ToString();
                     if (mdp == dr[0].ToString())
                         return true;
                 }
