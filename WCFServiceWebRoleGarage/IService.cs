@@ -37,6 +37,10 @@ namespace WCFServiceWebRoleGarage
 
         [OperationContract]
         bool createFacture(string idDevis);
+        [OperationContract]
+        int calculerpix(Option[] options);
+        [OperationContract]
+        Option[] listeOptions(string idFacture);
     }
 
 

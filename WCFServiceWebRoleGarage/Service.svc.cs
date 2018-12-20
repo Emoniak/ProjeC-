@@ -57,11 +57,7 @@ namespace WCFServiceWebRoleGarage
         public string CreateDevis(Vehicule vehicule,Client client)
         {
             //calcul du prix
-            int prix = 0;
-            foreach (var option in vehicule.Options)
-            {
-                prix += option.Prix;
-            }
+            int prix = calculerpix(vehicule.Options);
             string idDevis = "";
             using (MySqlConnection connection = new MySqlConnection(this.connectionString))
             {
@@ -84,6 +80,17 @@ namespace WCFServiceWebRoleGarage
             }
             return idDevis;
         }
+
+        public int calculerpix(Option[] options)
+        {
+            int prix = 0;
+            foreach (var option in options)
+            {
+                prix += option.Prix;
+            }
+            return prix;
+        }
+
         /// <summary>
         /// Crée un client dans la bdd
         /// </summary>
@@ -368,6 +375,48 @@ namespace WCFServiceWebRoleGarage
                 composite.StringValue += "Suffix";
             }
             return composite;
+        }
+
+        public Option[] listeOptions(string idFacture)
+        {
+            using (MySqlConnection conn = new MySqlConnection(this.connectionString))
+            {
+                conn.Open();
+                int version = 0;
+                string model = "";
+                int prix = 0;
+                List<Option> options = new List<Option>();
+                MySqlCommand cmd = new MySqlCommand("select prix_devis from tdevis where id_devis=(select id_devis from tfacture where id_facture=" + idFacture+")", conn);
+                MySqlDataReader dr = cmd.ExecuteReader();
+                if(dr.Read())
+                    prix = Convert.ToInt32(dr[0]);
+                dr.Close();
+                cmd.CommandText = "select id_model from tvehicule where id_devis=(select id_devis from tfacture where id_facture=5)";
+                dr = cmd.ExecuteReader();
+                if (dr.Read())
+                {
+                    model = dr[0].ToString();
+                    int prixVersion = 0;
+                    while(prixVersion!=prix)
+                    {
+                        version++;
+                        dr.Close();
+                        cmd.CommandText = "select sum(prix) as prix from toption where id_option in (select id_option from toption_has_tmodel where id_model="+model+" and version="+version+")";
+                        dr = cmd.ExecuteReader();
+                        if (dr.Read())
+                            prixVersion = Convert.ToInt32(dr[0]);
+                    }
+                }
+                dr.Close();
+                cmd.CommandText = "select nom_option, prix, caracteristique from toption where id_option in (select id_option from toption_has_tmodel where id_model=" + model + " and version=" + version + ")";
+                dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    options.Add(new Option {Prix=Convert.ToInt32(dr["prix"]),Nom=dr["nom_option"].ToString(),Caracteristique=dr["caracteristique"].ToString() });
+                }
+                return options.ToArray();
+            }
         }
     }
 }
