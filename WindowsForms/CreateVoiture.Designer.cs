@@ -183,7 +183,7 @@
             this.Controls.Add(this.comboBoxModeles);
             this.Controls.Add(this.comboBoxMarques);
             this.Name = "CreateVoiture";
-            this.Text = "CreateVoiture";
+            this.Text = "Création Voiture";
             this.Load += new System.EventHandler(this.CreateVoiture_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOptions)).EndInit();
             this.ResumeLayout(false);

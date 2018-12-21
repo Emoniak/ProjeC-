@@ -51,7 +51,7 @@ namespace WindowsForms
                 cn.Open();
                 for (int i = 0; i < dataGridViewClients.SelectedCells.Count; i++)
                 {
-                    MySqlCommand cmd = new MySqlCommand("select NOM_CLIENT, TEL, MAIL from tclient where NOM_CLIENT = '" + dataGridViewClients.SelectedCells[i] + "'", cn);
+                    MySqlCommand cmd = new MySqlCommand("select NOM_CLIENT, TEL, MAIL from tclient where NOM_CLIENT = '" + dataGridViewClients.SelectedCells[i].Value + "'", cn);
                     MySqlDataReader dr = cmd.ExecuteReader();
                     while (dr.Read())
                     {
@@ -60,7 +60,7 @@ namespace WindowsForms
                     dr.Close();
                 }
             }
-            bool resultat = client.CreerModel(vehicule, cli);
+            bool resultat = client.creerModelAvecFacture(vehicule, cli);
             if (!resultat)
             {
                 MessageBox.Show("Une erreur s'est produite, veuillez réessayer", "Erreur",
@@ -89,7 +89,7 @@ namespace WindowsForms
                 cn.Open();
                 for (int i = 0; i < dataGridViewClients.SelectedCells.Count; i++)
                 {
-                    MySqlCommand cmd = new MySqlCommand("select NOM_CLIENT, TEL, MAIL from tclient where NOM_CLIENT = '" + dataGridViewClients.SelectedCells[i] + "'", cn);
+                    MySqlCommand cmd = new MySqlCommand("select NOM_CLIENT, TEL, MAIL from tclient where NOM_CLIENT = '" + dataGridViewClients.SelectedCells[i].Value + "'", cn);
                     MySqlDataReader dr = cmd.ExecuteReader();
                     while (dr.Read())
                     {
@@ -97,8 +97,14 @@ namespace WindowsForms
                     }
                     dr.Close();
                 }
+                string idDevis = client.CreerModel(vehicule, cli);
+                MySqlCommand cmd2 = new MySqlCommand("select id_vehicule from tvehicule where id_devis="+idDevis, cn);
+                MySqlDataReader dr2 = cmd2.ExecuteReader();
+                if (dr2.Read())
+                {
+                    client.SortieUsine(Convert.ToInt32(dr2[0]), "0");
+                }
             }
-            string resultat = client.CreateDevis(vehicule, cli);
             Cursor = Cursors.Default;
             this.Dispose();
         }

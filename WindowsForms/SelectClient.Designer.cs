@@ -143,7 +143,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridViewClients);
             this.Name = "SelectClient";
-            this.Text = "SelectClient";
+            this.Text = "Sélection du client";
             this.Load += new System.EventHandler(this.SelectClient_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClients)).EndInit();
             this.ResumeLayout(false);

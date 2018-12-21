@@ -28,24 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewVoiture = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.dataGridViewOptions = new System.Windows.Forms.DataGridView();
             this.label3 = new System.Windows.Forms.Label();
             this.createVoiture = new System.Windows.Forms.Button();
             this.devis = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVoiture)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOptions)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dataGridViewVoiture
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 130);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(433, 308);
-            this.dataGridView1.TabIndex = 0;
+            this.dataGridViewVoiture.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewVoiture.Location = new System.Drawing.Point(12, 130);
+            this.dataGridViewVoiture.Name = "dataGridViewVoiture";
+            this.dataGridViewVoiture.Size = new System.Drawing.Size(433, 308);
+            this.dataGridViewVoiture.TabIndex = 0;
+            this.dataGridViewVoiture.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewVoiture_CellContentClick);
             // 
             // label1
             // 
@@ -64,13 +65,13 @@
             this.label2.Size = new System.Drawing.Size(0, 13);
             this.label2.TabIndex = 3;
             // 
-            // dataGridView2
+            // dataGridViewOptions
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(451, 130);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(337, 308);
-            this.dataGridView2.TabIndex = 4;
+            this.dataGridViewOptions.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewOptions.Location = new System.Drawing.Point(451, 130);
+            this.dataGridViewOptions.Name = "dataGridViewOptions";
+            this.dataGridViewOptions.Size = new System.Drawing.Size(337, 308);
+            this.dataGridViewOptions.TabIndex = 4;
             // 
             // label3
             // 
@@ -109,14 +110,15 @@
             this.Controls.Add(this.devis);
             this.Controls.Add(this.createVoiture);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.dataGridView2);
+            this.Controls.Add(this.dataGridViewOptions);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dataGridViewVoiture);
             this.Name = "Form1";
-            this.Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            this.Text = "Acceuil";
+            this.Load += new System.EventHandler(this.Form1_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVoiture)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOptions)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -124,10 +126,10 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataGridViewVoiture;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dataGridViewOptions;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button createVoiture;
         private System.Windows.Forms.Button devis;

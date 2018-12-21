@@ -20,22 +20,18 @@ USE `db_garage` ;
 -- -----------------------------------------------------
 -- Table `db_garage`.`tcategorie`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `db_garage`.`tcategorie` ;
-
 CREATE TABLE IF NOT EXISTS `db_garage`.`tcategorie` (
   `ID_CATEGORIE` INT(11) NOT NULL AUTO_INCREMENT,
   `NOM_CATEGORIE` VARCHAR(42) NOT NULL,
   PRIMARY KEY (`ID_CATEGORIE`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 3
+AUTO_INCREMENT = 4
 DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
 -- Table `db_garage`.`tclient`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `db_garage`.`tclient` ;
-
 CREATE TABLE IF NOT EXISTS `db_garage`.`tclient` (
   `ID_CLIENT` INT(11) NOT NULL AUTO_INCREMENT,
   `NOM_CLIENT` VARCHAR(42) NOT NULL,
@@ -44,15 +40,13 @@ CREATE TABLE IF NOT EXISTS `db_garage`.`tclient` (
   `MAIL` VARCHAR(42) NULL DEFAULT NULL,
   PRIMARY KEY (`ID_CLIENT`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 22
+AUTO_INCREMENT = 46
 DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
 -- Table `db_garage`.`tdevis`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `db_garage`.`tdevis` ;
-
 CREATE TABLE IF NOT EXISTS `db_garage`.`tdevis` (
   `ID_DEVIS` INT(11) NOT NULL AUTO_INCREMENT,
   `ID_CLIENT` INT(11) NOT NULL,
@@ -63,54 +57,47 @@ CREATE TABLE IF NOT EXISTS `db_garage`.`tdevis` (
     FOREIGN KEY (`ID_CLIENT`)
     REFERENCES `db_garage`.`tclient` (`ID_CLIENT`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 15
 DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
 -- Table `db_garage`.`tfacture`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `db_garage`.`tfacture` ;
-
 CREATE TABLE IF NOT EXISTS `db_garage`.`tfacture` (
   `ID_FACTURE` INT(11) NOT NULL AUTO_INCREMENT,
   `ID_DEVIS` INT(11) NOT NULL,
   `DATE_FACTURE` DATETIME NOT NULL,
   PRIMARY KEY (`ID_FACTURE`),
-  INDEX `DEVIS_FACTURE_FK` (`ID_DEVIS` ASC),
   CONSTRAINT `FK_DEVIS_FACTURE`
     FOREIGN KEY (`ID_DEVIS`)
     REFERENCES `db_garage`.`tdevis` (`ID_DEVIS`))
 ENGINE = InnoDB
+AUTO_INCREMENT = 6
 DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
 -- Table `db_garage`.`tmarque`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `db_garage`.`tmarque` ;
-
 CREATE TABLE IF NOT EXISTS `db_garage`.`tmarque` (
   `ID_MARQUE` INT(11) NOT NULL AUTO_INCREMENT,
   `NOM_MARQUE` VARCHAR(42) NOT NULL,
   PRIMARY KEY (`ID_MARQUE`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 200
+AUTO_INCREMENT = 217
 DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
 -- Table `db_garage`.`tmodel`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `db_garage`.`tmodel` ;
-
 CREATE TABLE IF NOT EXISTS `db_garage`.`tmodel` (
   `ID_MODEL` INT(11) NOT NULL AUTO_INCREMENT,
   `ID_MARQUE` INT(11) NOT NULL,
   `NOM_MODEL` VARCHAR(42) NOT NULL,
   `ID_Categorie` INT(11) NOT NULL,
   PRIMARY KEY (`ID_MODEL`),
-  INDEX `fk_tmodel_tmarque1_idx` (`ID_MARQUE` ASC),
-  INDEX `fk_tmodel_tcategorie1_idx` (`ID_Categorie` ASC),
   CONSTRAINT `fk_tmodel_tcategorie1`
     FOREIGN KEY (`ID_Categorie`)
     REFERENCES `db_garage`.`tcategorie` (`ID_CATEGORIE`)
@@ -122,15 +109,13 @@ CREATE TABLE IF NOT EXISTS `db_garage`.`tmodel` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
-AUTO_INCREMENT = 1138
+AUTO_INCREMENT = 1468
 DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
 -- Table `db_garage`.`toption`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `db_garage`.`toption` ;
-
 CREATE TABLE IF NOT EXISTS `db_garage`.`toption` (
   `ID_OPTION` INT(11) NOT NULL AUTO_INCREMENT,
   `NOM_OPTION` VARCHAR(42) NOT NULL,
@@ -138,22 +123,18 @@ CREATE TABLE IF NOT EXISTS `db_garage`.`toption` (
   `prix` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`ID_OPTION`))
 ENGINE = InnoDB
-AUTO_INCREMENT = 1050
+AUTO_INCREMENT = 1401
 DEFAULT CHARACTER SET = latin1;
 
 
 -- -----------------------------------------------------
 -- Table `db_garage`.`toption_has_tmodel`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `db_garage`.`toption_has_tmodel` ;
-
 CREATE TABLE IF NOT EXISTS `db_garage`.`toption_has_tmodel` (
   `ID_OPTION` INT(11) NOT NULL,
   `ID_MODEL` INT(11) NOT NULL,
   `version` INT(11) NULL DEFAULT NULL,
   PRIMARY KEY (`ID_MODEL`, `ID_OPTION`),
-  INDEX `fk_toption_has_tmodel_tmodel1_idx` (`ID_MODEL` ASC),
-  INDEX `fk_toption_has_tmodel_toption1_idx` (`ID_OPTION` ASC),
   CONSTRAINT `fk_toption_has_tmodel_tmodel1`
     FOREIGN KEY (`ID_MODEL`)
     REFERENCES `db_garage`.`tmodel` (`ID_MODEL`)
@@ -171,8 +152,6 @@ DEFAULT CHARACTER SET = latin1;
 -- -----------------------------------------------------
 -- Table `db_garage`.`tvehicule`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `db_garage`.`tvehicule` ;
-
 CREATE TABLE IF NOT EXISTS `db_garage`.`tvehicule` (
   `ID_VEHICULE` INT(11) NOT NULL AUTO_INCREMENT,
   `ID_DEVIS` INT(11) NULL DEFAULT NULL,
@@ -180,9 +159,6 @@ CREATE TABLE IF NOT EXISTS `db_garage`.`tvehicule` (
   `ID_MODEL` INT(11) NOT NULL,
   `PLAQUE` CHAR(9) NULL DEFAULT NULL,
   PRIMARY KEY (`ID_VEHICULE`),
-  INDEX `VEHICULE_CLIENT_FK` (`ID_CLIENT` ASC),
-  INDEX `VEHICULE_DEVIS_FK` (`ID_DEVIS` ASC),
-  INDEX `fk_tvehicule_tmodel1_idx` (`ID_MODEL` ASC),
   CONSTRAINT `FK_VEHICULE_CLIENT`
     FOREIGN KEY (`ID_CLIENT`)
     REFERENCES `db_garage`.`tclient` (`ID_CLIENT`),
@@ -195,23 +171,39 @@ CREATE TABLE IF NOT EXISTS `db_garage`.`tvehicule` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
+AUTO_INCREMENT = 10
 DEFAULT CHARACTER SET = latin1;
 
 USE `db_garage` ;
 
 -- -----------------------------------------------------
--- procedure CreationVehicule
+-- procedure CreationFacture
 -- -----------------------------------------------------
 
-USE `db_garage`;
-DROP procedure IF EXISTS `db_garage`.`CreationVehicule`;
+DELIMITER $$
+USE `db_garage`$$
+CREATE DEFINER=`AdminGarage`@`%` PROCEDURE `CreationFacture`(
+	IN `fkDevis` INT,
+	IN `ParamDate` DATETIME
+
+)
+BEGIN
+	insert into tfacture(id_devis,date_facture)
+	values(fkDevis,ParamDate);
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure CreationVehicule
+-- -----------------------------------------------------
 
 DELIMITER $$
 USE `db_garage`$$
 CREATE DEFINER=`AdminGarage`@`%` PROCEDURE `CreationVehicule`(in devis int,in usine int,in model int)
-BEGIN
-	insert into tvehicule (id_devis,id_client,id_model)
-    values(devis,usine,model);
+BEGIN
+	insert into tvehicule (id_devis,id_client,id_model)
+    values(devis,usine,model);
 END$$
 
 DELIMITER ;
@@ -220,15 +212,12 @@ DELIMITER ;
 -- procedure InsertCategorie
 -- -----------------------------------------------------
 
-USE `db_garage`;
-DROP procedure IF EXISTS `db_garage`.`InsertCategorie`;
-
 DELIMITER $$
 USE `db_garage`$$
 CREATE DEFINER=`AdminGarage`@`%` PROCEDURE `InsertCategorie`(in nom varchar(42))
-BEGIN
-	INSERT INTO tcategorie(Nom_categorie) 
-		VALUES (nom);
+BEGIN
+	INSERT INTO tcategorie(Nom_categorie) 
+		VALUES (nom);
 END$$
 
 DELIMITER ;
@@ -237,16 +226,13 @@ DELIMITER ;
 -- procedure InsertEntreprise
 -- -----------------------------------------------------
 
-USE `db_garage`;
-DROP procedure IF EXISTS `db_garage`.`InsertEntreprise`;
-
 DELIMITER $$
 USE `db_garage`$$
 CREATE DEFINER=`AdminGarage`@`%` PROCEDURE `InsertEntreprise`(in nom varchar(36))
-BEGIN
-Set @usine = CONCAT('usine ',nom);
-	insert into tclient (NOM_CLIENT,isphysique)
-    values(@usine,0);
+BEGIN
+Set @usine = CONCAT('usine ',nom);
+	insert into tclient (NOM_CLIENT,isphysique)
+    values(@usine,0);
 END$$
 
 DELIMITER ;
@@ -255,15 +241,12 @@ DELIMITER ;
 -- procedure InsertMarque
 -- -----------------------------------------------------
 
-USE `db_garage`;
-DROP procedure IF EXISTS `db_garage`.`InsertMarque`;
-
 DELIMITER $$
 USE `db_garage`$$
 CREATE DEFINER=`AdminGarage`@`%` PROCEDURE `InsertMarque`(in nom varchar(42))
-BEGIN
-	INSERT INTO tmarque(Nom_Marque) 
-		VALUES (nom);
+BEGIN
+	INSERT INTO tmarque(Nom_Marque) 
+		VALUES (nom);
 END$$
 
 DELIMITER ;
@@ -272,15 +255,12 @@ DELIMITER ;
 -- procedure InsertOption
 -- -----------------------------------------------------
 
-USE `db_garage`;
-DROP procedure IF EXISTS `db_garage`.`InsertOption`;
-
 DELIMITER $$
 USE `db_garage`$$
 CREATE DEFINER=`AdminGarage`@`%` PROCEDURE `InsertOption`(in nomOption varchar(42),in carc varchar(255),in prixpara int)
-BEGIN
-	insert into toption(Nom_Option,caracteristique,prix)
-		values(nomOption,carc,prixpara);
+BEGIN
+	insert into toption(Nom_Option,caracteristique,prix)
+		values(nomOption,carc,prixpara);
 END$$
 
 DELIMITER ;
@@ -289,15 +269,50 @@ DELIMITER ;
 -- procedure choisirOption
 -- -----------------------------------------------------
 
-USE `db_garage`;
-DROP procedure IF EXISTS `db_garage`.`choisirOption`;
-
 DELIMITER $$
 USE `db_garage`$$
 CREATE DEFINER=`AdminGarage`@`%` PROCEDURE `choisirOption`(in fkoption int, in fkmodel int, in version int)
-BEGIN
-	insert into toption_has_tmodel
-		values(fkoption,fkmodel,version);
+BEGIN
+	insert into toption_has_tmodel
+		values(fkoption,fkmodel,version);
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure createClient
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `db_garage`$$
+CREATE DEFINER=`AdminGarage`@`%` PROCEDURE `createClient`(
+	IN `paramNom` VARCHAR(42)
+,
+	IN `ParamTel` VARCHAR(42),
+	IN `ParamMail` VARCHAR(42)
+
+)
+BEGIN	insert into tclient (Nom_client,tel,mail,ISPHYSIQUE)
+
+		values(paramNom,ParamTel,ParamMail,1);
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure creationDevis
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `db_garage`$$
+CREATE DEFINER=`AdminGarage`@`%` PROCEDURE `creationDevis`(
+	IN `idcli` INT,
+	IN `fkprix` FLOAT,
+	IN `paramDate` DATETIME
+)
+BEGIN
+	insert into tdevis(ID_Client,Prix_devis,date_devis)
+	values(idcli,fkprix,paramDate);
 END$$
 
 DELIMITER ;
@@ -306,15 +321,30 @@ DELIMITER ;
 -- procedure insertModel
 -- -----------------------------------------------------
 
-USE `db_garage`;
-DROP procedure IF EXISTS `db_garage`.`insertModel`;
-
 DELIMITER $$
 USE `db_garage`$$
 CREATE DEFINER=`AdminGarage`@`%` PROCEDURE `insertModel`(in marque int,in nom varchar(42),in categorie int)
-BEGIN
-	insert into tmodel(ID_marque,Nom_Model,ID_Categorie)
-		values(marque,nom,categorie);
+BEGIN
+	insert into tmodel(ID_marque,Nom_Model,ID_Categorie)
+		values(marque,nom,categorie);
+END$$
+
+DELIMITER ;
+
+-- -----------------------------------------------------
+-- procedure sortiUsine
+-- -----------------------------------------------------
+
+DELIMITER $$
+USE `db_garage`$$
+CREATE DEFINER=`AdminGarage`@`%` PROCEDURE `sortiUsine`(
+	IN `fkclient` INT,
+	IN `paramvehicule` INT,
+	IN `paramplaque` CHAR(9)
+)
+BEGIN
+	update tvehicule set plaque=paramplaque, id_client=fkclient 
+	where id_vehicule=paramvehicule;
 END$$
 
 DELIMITER ;

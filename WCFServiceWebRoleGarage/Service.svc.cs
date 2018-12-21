@@ -126,7 +126,7 @@ namespace WCFServiceWebRoleGarage
         /// <param name="vehicule">objet vehicule du WCF</param>
         /// <param name="client">objet client WCF</param>
         /// <returns></returns>
-        public bool CreerModel(Vehicule vehicule,Client client)
+        public string CreerModel(Vehicule vehicule,Client client)
         {
             string idMarque = "", idModel = "", idcategorie = "",idClient="",idDevis="";
             int version = -1;
@@ -237,15 +237,14 @@ namespace WCFServiceWebRoleGarage
                     command.CommandText = "call CreationVehicule(" + idDevis + "," + idusine + "," + idModel + ")";
                     command.ExecuteNonQuery();
 
-                    createFacture(idDevis);
-
                     transaction.Commit();
+                    return idDevis;
                 }
                 catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
                     transaction.Rollback();
-                    return false;
+                    return null;
 
                 }
                 finally
@@ -253,8 +252,21 @@ namespace WCFServiceWebRoleGarage
                     conn.Close();
                 }
             }
+        }
 
-            return true;
+        public bool creerModelAvecFacture(Vehicule vehicule, Client client)
+        {
+            try
+            {
+                createFacture(CreerModel(vehicule, client));
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
+
         }
 
         public bool createFacture(string idDevis)
@@ -391,7 +403,7 @@ namespace WCFServiceWebRoleGarage
                 if(dr.Read())
                     prix = Convert.ToInt32(dr[0]);
                 dr.Close();
-                cmd.CommandText = "select id_model from tvehicule where id_devis=(select id_devis from tfacture where id_facture=5)";
+                cmd.CommandText = "select id_model from tvehicule where id_devis=(select id_devis from tfacture where id_facture="+idFacture+")";
                 dr = cmd.ExecuteReader();
                 if (dr.Read())
                 {

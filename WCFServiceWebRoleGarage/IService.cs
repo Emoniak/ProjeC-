@@ -22,19 +22,16 @@ namespace WCFServiceWebRoleGarage
         // TODO: ajoutez vos opérations de service ici
         [OperationContract]
         string AjouterOption(Option option);
-
         [OperationContract]
-        bool CreerModel(Vehicule vehicule, Client client);
-
+        string CreerModel(Vehicule vehicule, Client client);
+        [OperationContract]
+        bool creerModelAvecFacture(Vehicule vehicule, Client client);
         [OperationContract]
         string CreerClient(Client client);
-
         [OperationContract]
         string CreateDevis(Vehicule vehicule,Client client);
-
         [OperationContract]
         bool SortieUsine(int idVehicule, string plaque);
-
         [OperationContract]
         bool createFacture(string idDevis);
         [OperationContract]
