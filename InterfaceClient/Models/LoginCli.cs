@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Configuration;
@@ -31,8 +32,8 @@ namespace InterfaceClient
             get { return login; }
             set { login = value; }
         }
-
-        public bool VerifID()
+    
+    public bool VerifID()
         {
             using (MySqlConnection conn = new MySqlConnection(HomeController.cs))
             {

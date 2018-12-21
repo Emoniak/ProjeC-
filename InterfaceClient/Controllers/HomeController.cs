@@ -48,7 +48,9 @@ namespace InterfaceClient
             DataVehicule d = new DataVehicule();
             d.getVehicules(id);
             return View("Index", d);
+        
 
         }
     }
 }
+
