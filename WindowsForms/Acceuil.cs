@@ -30,7 +30,7 @@ namespace WindowsForms
             devis.Show();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void onLoad()
         {
             DataTable dt = new DataTable();
             using (MySqlConnection cn = new MySqlConnection(Program._cn))
@@ -44,6 +44,11 @@ namespace WindowsForms
                 }
                 dataGridViewVoiture.DataSource = dt;
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            onLoad();
         }
 
         private void dataGridViewVoiture_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -64,6 +69,11 @@ namespace WindowsForms
             }
             WCFUtils.Option[] listeOptions = cli.listeOptions(idFacture.ToString());
             dataGridViewOptions.DataSource = listeOptions;
+        }
+
+        private void btnRafraichir_Click(object sender, EventArgs e)
+        {
+            onLoad();
         }
     }
 }

@@ -35,6 +35,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.createVoiture = new System.Windows.Forms.Button();
             this.devis = new System.Windows.Forms.Button();
+            this.btnRafraichir = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVoiture)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOptions)).BeginInit();
             this.SuspendLayout();
@@ -102,11 +103,22 @@
             this.devis.UseVisualStyleBackColor = true;
             this.devis.Click += new System.EventHandler(this.devis_Click);
             // 
+            // btnRafraichir
+            // 
+            this.btnRafraichir.Location = new System.Drawing.Point(370, 12);
+            this.btnRafraichir.Name = "btnRafraichir";
+            this.btnRafraichir.Size = new System.Drawing.Size(75, 37);
+            this.btnRafraichir.TabIndex = 8;
+            this.btnRafraichir.Text = "Rafraichir";
+            this.btnRafraichir.UseVisualStyleBackColor = true;
+            this.btnRafraichir.Click += new System.EventHandler(this.btnRafraichir_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnRafraichir);
             this.Controls.Add(this.devis);
             this.Controls.Add(this.createVoiture);
             this.Controls.Add(this.label3);
@@ -133,5 +145,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button createVoiture;
         private System.Windows.Forms.Button devis;
+        private System.Windows.Forms.Button btnRafraichir;
     }
 }
