@@ -292,9 +292,9 @@ CREATE DEFINER=`AdminGarage`@`%` PROCEDURE `createClient`(
 	IN `ParamMail` VARCHAR(42)
 
 )
-BEGIN
-	insert into tclient (Nom_client,tel,mail)
-		values(paramNom,ParamTel,ParamMail);
+BEGIN	insert into tclient (Nom_client,tel,mail,ISPHYSIQUE)
+
+		values(paramNom,ParamTel,ParamMail,1);
 END$$
 
 DELIMITER ;
