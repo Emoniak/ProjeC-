@@ -115,7 +115,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataGridViewVoiture);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Acceuil";
             this.Load += new System.EventHandler(this.Form1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewVoiture)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOptions)).EndInit();

@@ -12,7 +12,7 @@ namespace WCFServiceWebRoleGarage
         private int nbRoue;
         private string marque;
         private string model;
-        private int plaque;
+        private string plaque;
         private string categorie;
         private Option[] options;
 
@@ -31,7 +31,7 @@ namespace WCFServiceWebRoleGarage
         }
 
         [DataMember]
-        public int Plaque
+        public string Plaque
         {
             get { return plaque; }
             set { plaque = value; }

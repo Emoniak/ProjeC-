@@ -54,14 +54,29 @@
   <xs:element name="CreerModelResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="CreerModelResult" type="xs:boolean" />
+        <xs:element minOccurs="0" name="CreerModelResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="creerModelAvecFacture">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WCFServiceWebRoleGarage" minOccurs="0" name="vehicule" nillable="true" type="q6:Vehicule" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WCFServiceWebRoleGarage" minOccurs="0" name="client" nillable="true" type="q7:Client" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="creerModelAvecFactureResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="creerModelAvecFactureResult" type="xs:boolean" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="CreerClient">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WCFServiceWebRoleGarage" minOccurs="0" name="client" nillable="true" type="q6:Client" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WCFServiceWebRoleGarage" minOccurs="0" name="client" nillable="true" type="q8:Client" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -75,8 +90,8 @@
   <xs:element name="CreateDevis">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WCFServiceWebRoleGarage" minOccurs="0" name="vehicule" nillable="true" type="q7:Vehicule" />
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WCFServiceWebRoleGarage" minOccurs="0" name="client" nillable="true" type="q8:Client" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WCFServiceWebRoleGarage" minOccurs="0" name="vehicule" nillable="true" type="q9:Vehicule" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WCFServiceWebRoleGarage" minOccurs="0" name="client" nillable="true" type="q10:Client" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -119,7 +134,7 @@
   <xs:element name="calculerpix">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WCFServiceWebRoleGarage" minOccurs="0" name="options" nillable="true" type="q9:ArrayOfOption" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WCFServiceWebRoleGarage" minOccurs="0" name="options" nillable="true" type="q11:ArrayOfOption" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -140,7 +155,7 @@
   <xs:element name="listeOptionsResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WCFServiceWebRoleGarage" minOccurs="0" name="listeOptionsResult" nillable="true" type="q10:ArrayOfOption" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/WCFServiceWebRoleGarage" minOccurs="0" name="listeOptionsResult" nillable="true" type="q12:ArrayOfOption" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

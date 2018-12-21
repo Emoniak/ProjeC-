@@ -69,7 +69,7 @@ namespace WindowsForms
                 }
                 facdr.Close();
 
-                MySqlCommand cmd = new MySqlCommand("select ID_DEVIS, ID_CLIENT, PRIX_DEVIS, Date_Devis from tdevis", cn);
+                MySqlCommand cmd = new MySqlCommand("select ID_DEVIS, ID_CLIENT, PRIX_DEVIS, Date_Devis from tdevis where id_devis in (select id_devis from tvehicule where plaque=0)", cn);
                 MySqlDataReader dr = cmd.ExecuteReader();
 
                 int cpt = 0;

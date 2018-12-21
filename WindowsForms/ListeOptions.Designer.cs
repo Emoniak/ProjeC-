@@ -114,7 +114,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxSearch);
             this.Name = "ListeOptions";
-            this.Text = "ListeOptions";
+            this.Text = "Liste des Options";
             this.Load += new System.EventHandler(this.ListeOptions_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOptions)).EndInit();
             this.ResumeLayout(false);

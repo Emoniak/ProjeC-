@@ -22,7 +22,7 @@
       <xs:element minOccurs="0" name="Model" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="NbRoue" type="xs:int" />
       <xs:element minOccurs="0" name="Options" nillable="true" type="tns:ArrayOfOption" />
-      <xs:element minOccurs="0" name="Plaque" type="xs:int" />
+      <xs:element minOccurs="0" name="Plaque" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Vehicule" nillable="true" type="tns:Vehicule" />
